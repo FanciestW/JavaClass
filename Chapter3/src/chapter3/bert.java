@@ -15,7 +15,7 @@ public class bert
 
         //Declaring Variables
         int price, downPayment, tradeIn, months;
- 	double annualInterest, payment;
+ 	double annualInterest; //Deleted payment because the variable is not being used
         String custName;
 
         Scanner reader = new Scanner (System.in);
@@ -35,11 +35,11 @@ public class bert
         annualInterest = reader.nextDouble();
 
         //Output
-        calculatePayment(price, downPayment, tradeIn, months, annualInterest); //method parameters months and annualInterests were switched.
+        calculatePayment(price, downPayment, tradeIn, months, annualInterest, custName); //method parameters months and annualInterests were switched.
    }
 
     public static void calculatePayment(int price, double downPayment, int tradeIn,
-            int months, double annualInterest)
+            int months, double annualInterest, String custName) //custName is added as a parameter so it is available to the method.
     {
         double interest; //Made interest interest so line 49 calculation is possible.
         double loanAmt; //loanAmt was made into a double to work with calculation on line 50
@@ -48,12 +48,12 @@ public class bert
 	//Calculations
         interest = annualInterest/12; //interest was made into a double to be compatible with annualInterest which is a double type
 	loanAmt = price-downPayment-tradeIn; //Variable downPayment was spelled with a lowercase 'p' And it needs to exact variable name. Also loan amount was made into a double to be compatible.
-	payment = loanAmt/((1/interest)-(1/(interest * (Math.pow(interest, months)+1)))); //Correct parameters for Math.pow and fixed placements of parenthesises.
+	payment=loanAmt/((1/interest)-(1/(interest*Math.pow (1+interest, months)))); //, was added between interest and months
 
 
 	System.out.print("The monthly payment for " + custName + " is $");
-	System.out.println(payment);
+	System.out.println((int)payment); //typecasted payment to int
 
-        return;
+        //Deleted return; because it was not neccesary
     }
 }
