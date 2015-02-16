@@ -1,6 +1,7 @@
 /*
 Area.java
 By: William Lin
+This program calculates the area of a certain shape for you
 */
 package chapter4;
 
@@ -11,6 +12,13 @@ public class Area{
         calcArea();
     }
     
+    /**
+     * This method has no parameters. All it does is double the variables needed to find all the areas for
+     * all the different shapes. And it also asks the user what shape they are going to calculate the area of.
+     * Also it ask them what the shapes values are. Then it takes the input and assigns them to the right variables.
+     * And depending what the user chooses, it invokes the correct method to find that shapes area. Passing the 
+     * inputted values as the parameters to that one method.
+     */
     public static void calcArea(){
         double base, height, radius, length, width;
         System.out.println("1 for Triangle, 2 for Circle, 3 for Rectangle, 0 for none of them");
@@ -36,20 +44,34 @@ public class Area{
             areaRectangle(length, width);
         }
         else{
-            return; //This is not needed, if it is empty it will also do nothing since it is the end of the program.
+            return; //This is not needed, if it is empty it will also do nothing since it is the end of the program
         }
     }
     
+    /**
+     * This method calculates the area of a right triangle. It requires the following parameters:
+     * @param base The base of the triangle
+     * @param height The height of the triangle
+     */
     public static void areaTriangle(double base, double height){
         System.out.print("Area = ");
         System.out.println((.5) * base * height);
     }
     
+    /**
+     * This method calculates the area of a circle. It requires the following parameters:
+     * @param radius The radius of the circle.
+     */
     public static void areaCircle(double radius){
         System.out.print("Area = ");
         System.out.println(Math.PI * (Math.pow(radius, 2)));
     }
     
+    /**
+     * This method calculates the area of a rectangle. It requires the following parameters:
+     * @param length The length of the rectangle.
+     * @param width The width of the rectangle.
+     */
     public static void areaRectangle(double length, double width){
         System.out.print("Area = ");
         System.out.println(length * width);

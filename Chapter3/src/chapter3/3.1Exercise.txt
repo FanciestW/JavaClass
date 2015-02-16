@@ -1,0 +1,26 @@
+public static void zoop () {
+ baffle ();
+ System.out.print ("You wugga ");
+ baffle ();
+ }
+ public static void main (String[] args) {
+ System.out.print ("No, I ");
+ zoop ();
+ System.out.print ("I ");
+ baffle ();
+ }
+ public static void baffle () {
+ System.out.print ("wug");
+ ping ();
+ }
+ public static void ping () {
+ System.out.println (".");
+ }
+
+The output is:
+
+No, I wug.
+You wugga wug.
+I wug.
+
+What happens is Java executes the "main" method first. Inside the main method it prints "No, I " without leaving a new line. Then it goes to the zoop() method which sends you to the baffle() method which prints "wug" and while still in the baffle() method it sends you to the ping() method which prints "." and starts a new line. Making the first line "No, I wug." After ping() there is nothing left in baffle() so it goes back to zoop() and prints "You wugga " without starting a new line. Then after that it invokes the baffle() method again which adds "wug." like it did to the first line and it also starts a new line. The zoop() method is done running so it goes back to continue the main method, picking up where it left off, right after zoop(); So it prints "I " without starting a new line. And then it invokes baffle() again which we know prints "wug." and starting a new line. That is how we get that output.

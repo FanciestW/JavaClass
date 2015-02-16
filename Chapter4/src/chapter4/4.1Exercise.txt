@@ -1,0 +1,32 @@
+public class Narf {
+ public static void zoop (String fred, int bob) {
+ System.out.println (fred);
+ if (bob == 5) {
+ ping ("not ");
+ } else {
+ System.out.println ("!");
+ }
+ }
+ public static void main (String[] args) {
+ int bizz = 5;
+ int buzz = 2;
+ zoop ("just for", bizz);
+ clink (2*buzz);
+ }
+ public static void clink (int fork) {
+ System.out.print ("It's ");
+ zoop ("breakfast ", fork) ;
+ }
+ public static void ping (String strangStrung) {
+ System.out.println ("any " + strangStrung + "more ");
+ }
+} 
+
+The output is:
+
+just for
+any not more 
+It's breakfast 
+!
+
+So we start at the main method where it creates 2 int variables: bizz which equals 5 and buzz which equals 2. Then it invokes the zoop() method and pass to it the parametes of ("just for", bizz). bizz is equal to 5. So in zoop() it prints the variable fred which is its first parameter, String fred. We passed to it the value of "just for" So it prints "just for" and starts a new line. Now we reach a conditional statement in zoop(). It calls for the bob variable, which is its second parameter. And we passed the value 5 to it from the main method. So bob equals 5. It says if bob == 5, which it does, then invoke the method ping() with a value of ("not "). So in ping the parameter is String strangeStrung. We passed a value of "not " to ping() from the zoop() method. Then in ping() it prints "any " + strangStrung, which is "not ", + "more ". So over all it prints "any not more " and starts a new line. So we go back to zoop() but we are done with zoop() because it has reached the end of the method. So back to main(). It now invokes the click() method, passing the value (2*buuz) to the method. In click() it required one int parameter which is 2*buzz which equals 4 from the main() method. It prints "It's " without starting a new line. Then it invokes the zoop() method with the values ("breakfast ", fork) zoop() takes a String and a int. It prints the string on the same line because the clink() method never started a new line when it printed "It's ". so the line says "It's breakfast" and starts a new line. And after the printing of "breakfast" there is a conditional statement. The variable bob is equal to 4 which was passed a a value from the clink() method. So bob does not equal 5 so it runs the else statement. Which is print an "!" and start a new line. Then it finishes and goes back to clink() but clink() as also now reached the end, so it goes back to main(). But main() has also reached the end. And at the end of main() the program terminates and finishes running.
