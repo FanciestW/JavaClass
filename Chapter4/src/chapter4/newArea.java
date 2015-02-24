@@ -1,13 +1,16 @@
 /*
 Area.java
+Exercise 4.2
 By: William Lin
 This program calculates the area of a certain shape for you
 */
 package chapter4;
 
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
-public class Area{
+public class newArea{
+    
     public static void main(String[] args){
         calcArea();
     }
@@ -21,26 +24,25 @@ public class Area{
      */
     public static void calcArea(){
         double base, height, radius, length, width;
-        System.out.println("1 for Triangle\n2 for Circle\n3 for Rectangle\n0 for none of them");
-        Scanner scInput = new Scanner(System.in);
-        int input = scInput.nextInt();
+        String strInput = JOptionPane.showInputDialog("1 for Triangle\n2 for Circle\n3 for Rectangle\n0 for none of them");
+        int input = Integer.parseInt(strInput);
         if(input == 1){
-            System.out.print("Base of Triangle: ");
-            base = scInput.nextDouble();
-            System.out.print("Height of Triangle: ");
-            height = scInput.nextDouble();
+            strInput = JOptionPane.showInputDialog("Base of Triangle: ");
+            base = Double.parseDouble(strInput);
+            strInput = JOptionPane.showInputDialog("Height of Triangle: ");
+            height = Double.parseDouble(strInput);
             areaTriangle(base, height);
         }
         else if(input == 2){
-            System.out.print("Radius of Circle: ");
-            radius = scInput.nextDouble();
+            strInput = JOptionPane.showInputDialog("Radius of Circle: ");
+            radius = Double.parseDouble(strInput);
             areaCircle(radius);
         }
         else if(input == 3){
-            System.out.print("Length of Rectangle: ");
-            length = scInput.nextDouble();
-            System.out.print("Width of Rectangle: ");
-            width = scInput.nextDouble();
+            strInput = JOptionPane.showInputDialog("Length of Rectangle: ");
+            length = Double.parseDouble(strInput);
+            strInput = JOptionPane.showInputDialog("Width of Rectangle: ");
+            width = Double.parseDouble(strInput);
             areaRectangle(length, width);
         }
         else{
@@ -54,8 +56,7 @@ public class Area{
      * @param height The height of the triangle
      */
     public static void areaTriangle(double base, double height){
-        System.out.print("Area = ");
-        System.out.println((.5) * base * height);
+        JOptionPane.showMessageDialog(null,"Area = " + ((.5) * base * height));
     }
     
     /**
@@ -63,8 +64,7 @@ public class Area{
      * @param radius The radius of the circle.
      */
     public static void areaCircle(double radius){
-        System.out.print("Area = ");
-        System.out.println(Math.PI * (Math.pow(radius, 2)));
+        JOptionPane.showMessageDialog(null, "Area = " + (Math.PI * (Math.pow(radius, 2))));
     }
     
     /**
@@ -73,7 +73,6 @@ public class Area{
      * @param width The width of the rectangle.
      */
     public static void areaRectangle(double length, double width){
-        System.out.print("Area = ");
-        System.out.println(length * width);
+        JOptionPane.showMessageDialog(null, "Area = " + (length * width));
     }
 }
