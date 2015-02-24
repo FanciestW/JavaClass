@@ -7,7 +7,6 @@ if your favorite number is a single digit number.
 */
 package chapter5;
 
-import javax.swing.JOptionPane;
 import java.util.Scanner;
 
 public class FavoriteNumber{
