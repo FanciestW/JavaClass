@@ -1,36 +1,35 @@
 /*
-FavoriteNumber.java
+newFavoriteNumber.java
 Exercise 5.2
 By: William Lin
 This program checks your if your favorite number is even and/or
-if your favorite number is a single digit number.
+if your favorite number is a single digit number. Using JOptionPane.
 */
 package chapter5;
 
 import javax.swing.JOptionPane;
-import java.util.Scanner;
 
-public class FavoriteNumber{
+public class newFavoriteNumber{
     
     public static void main(String[] args){
-        System.out.println("What is your favorite number?(No decimals please)");
-        Scanner scInput = new Scanner(System.in);
-        int number = scInput.nextInt();
+        JOptionPane msg = new JOptionPane();
+        String input = msg.showInputDialog("What is your favorite number?(No decimals please)");
+        int number = Integer.parseInt(input);
         
         if(isEven(number) && isSingleDigit(number)){
-            System.out.println("Your favorite number must be 2, 4, 6, or 8.");
+            msg.showMessageDialog(null, "Your favorite number must be 2, 4, 6, or 8.");
         }
         else if(!isEven(number) && !isSingleDigit(number)){
-            System.out.println("You have a \"oddly large\" favorite number.");
+            msg.showMessageDialog(null, "You have a \"oddly large\" favorite number.");
         }
         else if(!isEven(number) || isSingleDigit(number)){
-            System.out.println("Are you single because you're odd?");
+            msg.showMessageDialog(null, "Are you single because you're odd?");
         }
         else if(isEven(number) && !isSingleDigit(number)){
-            System.out.println("Are you even large enough?");
+            msg.showMessageDialog(null, "Are you even large enough?");
         }
         else{
-            System.out.println("You have one weird favorite number.");
+            msg.showMessageDialog(null, "You have one weird favorite number.");
         }
     }
     
