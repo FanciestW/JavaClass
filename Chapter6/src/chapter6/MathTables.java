@@ -1,14 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package chapter6;
 
-/**
- *
- * @author William
- */
-public class MathTables {
+public class MathTables{
     
+    public static void main(String[] args){
+        
+    }
+    
+    static void printCommonLogTable(){
+        double i = 10;
+        while (1 > 0){
+            
+        }
+    }
 }
