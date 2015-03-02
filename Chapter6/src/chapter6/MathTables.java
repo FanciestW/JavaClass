@@ -13,6 +13,11 @@ package chapter6;
 public class MathTables{
     
     public static void main(String[] args){
+        System.out.println("Common Log Table:");
+        printCommonLogTable();
+        System.out.println("\nAddition Table:");
+        printAdditionTable();
+        System.out.println("\nTrig Table:");
         printTrigTables();
     }
     
@@ -22,9 +27,9 @@ public class MathTables{
     public static void printCommonLogTable(){
         double i = 0;
         while(i <= 10){
-            double log = Math.log10(i);
-            double log2 = (Math.log(i)/Math.log(10));
-            System.out.println(i + ":  " + log2);
+            //double log = Math.log10(i); This can be in place of the conversion on line 26.
+            double log = (Math.log(i)/Math.log(10));
+            System.out.println(i + ":  " + log);
             i = i + 0.5;
         }
     }
