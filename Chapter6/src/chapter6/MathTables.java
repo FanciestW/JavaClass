@@ -13,11 +13,11 @@ package chapter6;
 public class MathTables{
     
     public static void main(String[] args){
-        System.out.println("Common Log Table:");
+        System.out.println();
         printCommonLogTable();
-        System.out.println("\nAddition Table:");
+        System.out.println();
         printAdditionTable();
-        System.out.println("\nTrig Table:");
+        System.out.println();
         printTrigTables();
     }
     
@@ -25,6 +25,7 @@ public class MathTables{
      * This method prints a table of common logs from 0 to 10
      */
     public static void printCommonLogTable(){
+        System.out.println("Common Log Table:");
         double i = 0;
         while(i <= 10){
             //double log = Math.log10(i); This can be in place of the conversion on line 26.
@@ -40,6 +41,7 @@ public class MathTables{
      * method to do it.
      */
     public static void printAdditionTable(){
+        System.out.println("Addition Table");
         for(int i = 0; i <= 12; i++){
             additionTableHelp(i);
         }
@@ -63,43 +65,10 @@ public class MathTables{
      * Increasing by increments of 30 degrees each time for each.
      */
     public static void printTrigTables(){
+        System.out.println("Trig Table:");
         for(double i = 0; i <= 360; i = i + 30){
             double rad = (i *Math.PI)/180;
             System.out.println(i + ": " + Math.sin(rad) + "..." + Math.cos(rad) + "..." + Math.tan(rad));
         } 
    }
-    
-    /**
-     * This method helps the printTrigTable() method by finding the sin of 
-     * the parameter n.
-     * @param deg The degree used to find sin. Converted to radians.
-     * @return The sin of parameter n.
-     */
-    public static double sin(double deg){
-        double rad = (deg * Math.PI)/180;
-        return(Math.sin(rad));
-    }
-    
-    /**
-     * This method helps the printTrigTable() method by finding the cos of 
-     * the parameter n.
-     * @param deg The degree used to find cos. Converted to radians.
-     * @return The cos of parameter n.
-     */
-    public static double cos(double deg){
-        double rad = (deg * Math.PI)/180;
-        return(Math.cos(rad));
-    }
-    
-    
-    /**
-     * This method helps the printTrigTable() method by finding the tan of 
-     * the parameter n.
-     * @param deg The degree used to find tan. Converted to radians.
-     * @return The tan of parameter n.
-     */
-    public static double tan(double deg){
-        double rad = (deg * Math.PI)/180;
-        return(Math.tan(rad));
-    }
 }
