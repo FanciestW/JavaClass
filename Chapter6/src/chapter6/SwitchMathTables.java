@@ -5,33 +5,16 @@ This program outputs 3 different tables. One for the common log. One for additio
 And one for sin, cos and tan. For the common log table it will print a table for
 common logs from 0 to 10 with increments of 0.5. For the addition table it will print a 2 dimensional
 table for the numbers 0 to 12. And for the trig table. It will print the cos, sin and tan of angles
-between 0 and 360 with increments of 30 degrees.
+between 0 and 360 with increments of 30 degrees. In this program you choose which table you want displayed.
 */
 
 package chapter6;
+import java.util.Scanner;
 
-public class MathTables{
+public class SwitchMathTables{
     
     public static void main(String[] args){
-        System.out.println("Common Log Table:");
-        printCommonLogTable();
-        System.out.println("\nAddition Table:");
-        printAdditionTable();
-        System.out.println("\nTrig Table:");
-        printTrigTables();
-    }
-    
-    /**
-     * This method prints a table of common logs from 0 to 10
-     */
-    public static void printCommonLogTable(){
-        double i = 0;
-        while(i <= 10){
-            //double log = Math.log10(i); This can be in place of the conversion on line 26.
-            double log = (Math.log(i)/Math.log(10));
-            System.out.println(i + ":  " + log);
-            i = i + 0.5;
-        }
+        
     }
     
     /**
@@ -40,6 +23,7 @@ public class MathTables{
      * method to do it.
      */
     public static void printAdditionTable(){
+        System.out.println("Addition Table:");
         for(int i = 0; i <= 12; i++){
             additionTableHelp(i);
         }
@@ -63,9 +47,9 @@ public class MathTables{
      * Increasing by increments of 30 degrees each time for each.
      */
     public static void printTrigTables(){
+        System.out.println("Trig Table:");
         for(double i = 0; i <= 360; i = i + 30){
-            double rad = (i *Math.PI)/180;
-            System.out.println(i + ": " + Math.sin(rad) + "..." + Math.cos(rad) + "..." + Math.tan(rad));
+            System.out.println(i + ": " + sin(i) + "..." + cos(i) + "..." + tan(i));
         } 
    }
     
