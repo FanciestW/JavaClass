@@ -12,7 +12,7 @@ public class Factorial{
     public static void main(String[] args){
         String input = JOptionPane.showInputDialog("Choose a positive whole number:");
         int n = Integer.parseInt(input);
-        System.out.println(factorial(n));
+        JOptionPane.showMessageDialog(null, n+"! = " + factorial(n));
     }
     
     /**

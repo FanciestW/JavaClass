@@ -13,7 +13,7 @@ package chapter6;
 public class MathTables{
     
     public static void main(String[] args){
-        printAdditionTable();
+        printTrigTables();
     }
     
     /**
@@ -54,9 +54,46 @@ public class MathTables{
         System.out.println();
     }
     /**
-     * 
+     * This method prints a table for the sin, cos, and tan of the angles between 0 and 360.
+     * Increasing by increments of 30 degrees each time for each.
      */
-    public static void printTrigTable(){
-        
+    public static void printTrigTables(){
+        for(double i = 0; i <= 360; i = i + 30){
+            System.out.println(i + ": " + sin(i) + "..." + cos(i) + "..." + tan(i));
+        } 
+   }
+    
+    /**
+     * This method helps the printTrigTable() method by finding the sin of 
+     * the parameter n.
+     * @param deg The degree used to find sin. Converted to radians.
+     * @return The sin of parameter n.
+     */
+    public static double sin(double deg){
+        double rad = (deg * Math.PI)/180;
+        return(Math.sin(rad));
+    }
+    
+    /**
+     * This method helps the printTrigTable() method by finding the cos of 
+     * the parameter n.
+     * @param deg The degree used to find cos. Converted to radians.
+     * @return The cos of parameter n.
+     */
+    public static double cos(double deg){
+        double rad = (deg * Math.PI)/180;
+        return(Math.cos(rad));
+    }
+    
+    
+    /**
+     * This method helps the printTrigTable() method by finding the tan of 
+     * the parameter n.
+     * @param deg The degree used to find tan. Converted to radians.
+     * @return The tan of parameter n.
+     */
+    public static double tan(double deg){
+        double rad = (deg * Math.PI)/180;
+        return(Math.tan(rad));
     }
 }
