@@ -1,0 +1,42 @@
+public static void main (String[] args) {
+	 boolean flag1 = isHoopy (202);
+	 boolean flag2 = isFrabjuous (202);
+	 System.out.println (flag1);
+	 System.out.println (flag2);
+	 if (flag1 && flag2) {
+	 	System.out.println ("ping!");
+	 }
+	 if (flag1 || flag2) {
+	 	System.out.println ("pong!");
+	 }
+}
+ public static boolean isHoopy (int x) {
+	 boolean hoopyFlag;
+	 if (x%2 == 0) {
+	 	hoopyFlag = true;
+	 } else {
+	 	hoopyFlag = false;
+	 }
+	 return hoopyFlag;
+}
+ public static boolean isFrabjuous (int x) {
+	 boolean frabjuousFlag;
+	 if (x > 0) {
+	 	frabjuousFlag = true;
+	 } else {
+	 	frabjuousFlag = false;
+	 }
+	 return frabjuousFlag;
+} 
+
+The output is:
+true
+true
+ping!
+pong!
+
+Lets start by looking at what each method does. The isHoopy() method takes a single int parameter and stores it as x. It creates a boolean hoopyFlag. Then it starts a conditional statement. If x%2 is equal to 0 then the boolean hoopyFlag is true. Anything else, and hoopyFlag is false. In other words, if x is even hoopyFlag is true and if it is odd, then it is false. Then isHoopy() returns the value of hoopyFlag. Now to isFrabjuous(). It also takes a single int parameter and stores it as x. It creates a boolean called frabjuousFlag. Then a conditional statement starts. If x is greater than 0 then frabjuousFlag is true, but anything else, and frabjuouseFlag is false. In other words if x is positive then frabjuousFlag is true, if not then it is false. Then the method returns the value of frabjuousFlag. So back to the main(), and now that we know what each method does we can figure out the output of the program. First a boolean is created, named flag1. It is set to equal the return value of isHoopy() with 202 being the value that is pass on. We know isHoopy returns true if the value passed to it is even so in this case boolean flag1 is true. Another boolean, flag2 is initialized and set to the return value of isFrabjuous when the value 202 is passed to it. We know what isFrabjuous does so we know that flag2 will be true. The main() then says print the value of flag1 and flag2 each one on its own line. So we get the output's first 2 lines. They are both true so they both print "true". Then there is a conditional statement. Saying if flag1 AND flag2 are true print "ping!" Well they both are true so it prints "ping!" and starts a new line. Then the next conditional statement says if either flag1 OR flag2 is true then print "pong!" At least one of them are true so it prints "pong!" giving you the final output of: 
+true
+true
+ping!
+pong!
