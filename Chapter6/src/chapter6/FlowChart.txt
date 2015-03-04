@@ -1,0 +1,22 @@
+Method 1:
+1. Start
+2. Get/Read N
+3. Create M and N and set both equal to 1
+4. Set F equal to F multiplied by M
+5. Check if M is equal to N.
+	-If no, make M = M + 1 and go back to step 4 and repeat from there.
+	-If yes, continure to step 6.
+6. Output/Write the value of F.
+7. End
+
+Method 2:
+Start
+Input N
+Create M, Set M = 1
+Create F, Set F = 1
+Set F = F * M
+While M is not equal to N
+	Set M = M + 1
+	F = F * M
+Output F
+End

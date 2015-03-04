@@ -13,18 +13,24 @@ package chapter6;
 public class MathTables{
     
     public static void main(String[] args){
+        System.out.println();
+        printCommonLogTable();
+        System.out.println();
         printAdditionTable();
+        System.out.println();
+        printTrigTables();
     }
     
     /**
      * This method prints a table of common logs from 0 to 10
      */
     public static void printCommonLogTable(){
+        System.out.println("Common Log Table:");
         double i = 0;
         while(i <= 10){
-            double log = Math.log10(i);
-            double log2 = (Math.log(i)/Math.log(10));
-            System.out.println(i + ":  " + log2);
+            //double log = Math.log10(i); This can be in place of the conversion on line 26.
+            double log = (Math.log(i)/Math.log(10));
+            System.out.println(i + ":  " + log);
             i = i + 0.5;
         }
     }
@@ -35,6 +41,7 @@ public class MathTables{
      * method to do it.
      */
     public static void printAdditionTable(){
+        System.out.println("Addition Table");
         for(int i = 0; i <= 12; i++){
             additionTableHelp(i);
         }
@@ -54,9 +61,14 @@ public class MathTables{
         System.out.println();
     }
     /**
-     * 
+     * This method prints a table for the sin, cos, and tan of the angles between 0 and 360.
+     * Increasing by increments of 30 degrees each time for each.
      */
-    public static void printTrigTable(){
-        
-    }
+    public static void printTrigTables(){
+        System.out.println("Trig Table:");
+        for(double i = 0; i <= 360; i = i + 30){
+            double rad = (i *Math.PI)/180;
+            System.out.println(i + ": " + Math.sin(rad) + "..." + Math.cos(rad) + "..." + Math.tan(rad));
+        } 
+   }
 }
