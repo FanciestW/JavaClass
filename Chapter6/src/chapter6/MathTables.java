@@ -13,7 +13,6 @@ package chapter6;
 public class MathTables{
     
     public static void main(String[] args){
-        System.out.println();
         printCommonLogTable();
         System.out.println();
         printAdditionTable();
