@@ -14,6 +14,6 @@ public class Chapter7 extends Applet{
         correspond to Quadrant I of a traditional coordinate plane, 
         so they are always positive.
         */
-        g.drawString("Hello World Applet", 500, 500);
+        g.drawString("Hello World Applet", 50, 25);
     }
 }
