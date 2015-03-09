@@ -20,15 +20,6 @@ public class Chapter7{
         }
     }
     
-<<<<<<< HEAD
-    public void paint(Graphics g){
-        /*drawString is a method of the Graphics class. It takes a string,
-        and two integer parameters. As x and y coordinates. These coordinates 
-        correspond to Quadrant I of a traditional coordinate plane, 
-        so they are always positive.
-        */
-        g.drawString("Hello World Applet", 50, 25);
-=======
     public static void reverse(){
         Scanner scInput = new Scanner(System.in);
         System.out.print("String: ");
@@ -39,7 +30,6 @@ public class Chapter7{
             index--;
         }
         System.out.println();
->>>>>>> ad14df54f44626ca006d93d8c32c407d49c9904b
     }
     
     public static void counter(){
