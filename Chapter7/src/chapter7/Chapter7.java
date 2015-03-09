@@ -1,19 +1,54 @@
 package chapter7;
-import java.applet.Applet;  //Imports the Applet Class
-import java.awt.Graphics;   //Imports the Graphics class, used to draw lines, circles, squares, text, etc.
 
-/**
- * This class implements an applet that simply displays "Hello World"
- * @author William
- */
-public class Chapter7 extends Applet{
+import java.util.Scanner;
+
+public class Chapter7{
     
-    public void paint(Graphics g){
-        /*drawString is a method of the Graphics class. It takes a string,
-        and two integer parameters. As x and y coordinates. These coordinates 
-        correspond to Quadrant I of a traditional coordinate plane, 
-        so they are always positive.
-        */
-        g.drawString("Hello World Applet", 500, 500);
+    public static void main(String[] args){
+        System.out.print("Your choice: ");
+        Scanner scChoice = new Scanner(System.in);
+        int choice = scChoice.nextInt();
+        switch(choice){
+            case 1:
+                reverse();
+                break;
+            case 2:
+                count();
+                break;
+            default:
+                System.err.println("Not vaild choice.");
+        }
     }
+    
+    public static void reverse(){
+        Scanner scInput = new Scanner(System.in);
+        System.out.print("String: ");
+        String input = scInput.next();
+        int index = input.length();
+        while(index != 0){
+            System.out.print(input.charAt(index-1));
+            index--;
+        }
+        System.out.println();
+    }
+    
+    public static void count(){
+        Scanner scInput = new Scanner(System.in);
+        System.out.print("String: ");
+        String input = scInput.next();
+        System.out.print("Letter: ");
+        String inputLetter = scInput.next();
+        char letter = inputLetter.charAt(0);
+        int index = 0;
+        int count = 0;
+        while(index < input.length()){
+            if(input.charAt(index) == letter){
+                count++;
+            }
+            index++;
+        }
+        System.out.println(count);
+    }
+    
+    
 }
