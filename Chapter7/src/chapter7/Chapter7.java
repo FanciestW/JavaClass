@@ -13,7 +13,7 @@ public class Chapter7{
                 reverse();
                 break;
             case 2:
-                count();
+                counter();
                 break;
             default:
                 System.err.println("Not vaild choice.");
@@ -32,7 +32,7 @@ public class Chapter7{
         System.out.println();
     }
     
-    public static void count(){
+    public static void counter(){
         Scanner scInput = new Scanner(System.in);
         System.out.print("String: ");
         String input = scInput.next();
