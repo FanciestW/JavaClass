@@ -1,4 +1,3 @@
-import javax.swing.*;
 /*
 NameJApplet.java
 By: William Lin
@@ -65,7 +64,6 @@ public class NameJApplet extends javax.swing.JApplet {
         nameLabel.setText("Name:");
 
         nameText.setPreferredSize(new java.awt.Dimension(100, 25));
-        nameText.setRequestFocusEnabled(false);
 
         check.setText("Check Name");
         check.addActionListener(new java.awt.event.ActionListener() {
