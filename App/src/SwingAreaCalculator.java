@@ -220,7 +220,7 @@ public class SwingAreaCalculator extends javax.swing.JFrame {
             ans.setText(String.valueOf(.5*base*height));
         }
         else{
-            JOptionPane.showMessageDialog(null, "Please select a shape");
+            JOptionPane.showMessageDialog(null, "Plexase select a shape");
         }
     }//GEN-LAST:event_areaBtnActionPerformed
 
