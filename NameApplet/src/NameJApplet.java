@@ -1,14 +1,9 @@
-import java.util.*;
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author William
- */
+NameJApplet.java
+By: William Lin
+This program is a JApplet that converts an user inputted name
+into standard form if it is not yet in standard form.
+*/
 public class NameJApplet extends javax.swing.JApplet {
 
     /**
@@ -66,12 +61,9 @@ public class NameJApplet extends javax.swing.JApplet {
         outputLabel = new javax.swing.JLabel();
         output = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 204));
-
         nameLabel.setText("Name:");
 
         nameText.setPreferredSize(new java.awt.Dimension(100, 25));
-        nameText.setRequestFocusEnabled(false);
 
         check.setText("Check Name");
         check.addActionListener(new java.awt.event.ActionListener() {
@@ -114,32 +106,58 @@ public class NameJApplet extends javax.swing.JApplet {
                 .addComponent(output)
                 .addContainerGap(49, Short.MAX_VALUE))
         );
+
+        nameText.getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
     
-    //This method checks the name and uses it in an output.
+    /*
+    This method checks the name and checks if it is in standard format.
+    if not it will convert it to standard format
+    */
     private void checkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkActionPerformed
         String name = nameText.getText();
-        //Generates a random number from 1 - 3
-        Random rand = new Random();
-        int i = rand.nextInt(2) + 1;
-        //Takes the randomly generates number and uses it to determine the output.
-        switch(i){
-            case 1:
-                output.setText("Hello " + name);
-                break;
-            case 2:
-                output.setText("Nice to meet you " + name);
-                break;
-            case 3:
-                output.setText("Welcome to myApplet " + name);
-                break;
-            default:
-                output.setText("Hi there " + name);
-                break;
+        if(name.equals("")){
+            output.setText("Please enter your name");
         }
-        
+        else{
+            output.setText(convertName(name));
+        }
     }//GEN-LAST:event_checkActionPerformed
-
+    
+    /**
+     * This method check the name and converts names into standard form if it is not in standard form.
+     * @param name The string that contains that name that is to be checked and converted.
+     * @return The name in standard form. If it does not have a space the program
+     * will assume there is no last name and first name so it will say "Please enter First and Last Name"
+     */
+    public static String convertName(String name){
+        if(hasComma(name)){
+            return(name);
+        }
+        else if(name.indexOf(' ') > -1){
+            int space = name.indexOf(' ');
+            String firstName = name.substring(0, space);
+            String lastName = name.substring(space + 1, name.length());
+            return(lastName + ", " + firstName);
+        }
+        else{
+            return("Please enter First and Last Name");
+        }
+    }
+    
+    /**
+     * This method checks whether or not the parameter name has a comma in it or not.
+     * @param name A string that is going to be checked for any commas.
+     * @return true if name has a comma and false if it doesn't
+     */
+    public static boolean hasComma(String name){
+        if(name.indexOf(',') > -1){
+            return(true);
+        }
+        else{
+            return(false);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton check;
