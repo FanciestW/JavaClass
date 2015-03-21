@@ -13,12 +13,17 @@ public class AreaCircleException{
     
     public static void main(String[] args){
         int x1 = getScannerInt("X1: ");
-        int x2 = getScannerInt("X2: ");
         int y1 = getScannerInt("Y1: ");
+        int x2 = getScannerInt("X2: ");
         int y2 = getScannerInt("Y2: ");
-        System.out.println("Area: " + areaCircle(x1, x2, y1, y2));
+        System.out.println("Area: " + areaCircle(x1, y1, x2, y2));
     }
     
+    /**
+     * 
+     * @param prompt The displayed text when getting user input.
+     * @return 
+     */
     public static int getScannerInt(String prompt){
         int input = 0;
         boolean check = true;
@@ -32,7 +37,7 @@ public class AreaCircleException{
                check = false;
            } 
            catch(NumberFormatException ex){
-               System.out.println("Please input a correct number.");
+               System.out.println("Please input a valid integer.");
            }
         }
         return(input);
