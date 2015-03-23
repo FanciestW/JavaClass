@@ -11,33 +11,40 @@ import javax.swing.JOptionPane;
 
 public class AreaCircleException{
     
+    /**
+     * The main method calls the getScannerInt method with a string that will be the prompted text.
+     * This method will get a value for each point and also in the main method it will display the return
+     * value of the AreaCircle method which calculates the area of a circle based on 2 points on a circle.
+     */
     public static void main(String[] args){
-        int x1 = getScannerInt("X1: ");
-        int y1 = getScannerInt("Y1: ");
-        int x2 = getScannerInt("X2: ");
-        int y2 = getScannerInt("Y2: ");
-        System.out.println("Area: " + areaCircle(x1, y1, x2, y2));
+        double x1 = getScannerInt("X1");
+        double y1 = getScannerInt("Y1");
+        double x2 = getScannerInt("X2");
+        double y2 = getScannerInt("Y2");
+        JOptionPane.showMessageDialog(null, "Area: " + areaCircle(x1, y1, x2, y2));
     }
     
     /**
-     * 
+     * This method gets a user inputted value using the string parameter as the 
+     * displayed text. This method will catch if the user inputs anything but a number
+     * and it will loop until the user inputs a valid number or presses cancel.
      * @param prompt The displayed text when getting user input.
-     * @return 
+     * @return The input-A valid user inputted value as a double.
      */
-    public static int getScannerInt(String prompt){
-        int input = 0;
+    public static double getScannerInt(String prompt){
+        double input = 0;
         boolean check = true;
         while(check){
            try{
-               String Strinput =JOptionPane.showInputDialog(prompt);
+               String Strinput =JOptionPane.showInputDialog(prompt + ": ");
                if(Strinput == null){
                    System.exit(0);
                }
-               input = Integer.parseInt(Strinput);
+               input = Double.parseDouble(Strinput);
                check = false;
            } 
            catch(NumberFormatException ex){
-               System.out.println("Please input a valid integer.");
+               JOptionPane.showMessageDialog(null, "Please input a valid " + prompt + " value.");
            }
         }
         return(input);
