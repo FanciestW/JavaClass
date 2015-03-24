@@ -58,7 +58,7 @@ public class AreaCircleException{
      * @param y2 THe y coordinate of the second point.
      * @return The distance from point 1 to point 2.
      */
-    public static double distance(double x1, double x2, double y1, double y2){
+    public static double distance(double x1, double y1, double x2, double y2){
         return(Math.sqrt((Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2))));
     }
     
@@ -82,8 +82,8 @@ public class AreaCircleException{
      * @param y2 The y coordinate of the point on the outside of the circle.
      * @return The area of the circle with point (x1,y1) being it's center. And point (x2,y2) being a point on the outside of the circle.
      */
-    public static double areaCircle(double x1, double x2, double y1, double y2){
-        double radius = distance(x1, x2, y1, y2);
+    public static double areaCircle(double x1, double y1, double x2, double y2){
+        double radius = distance(x1, y1, x2, y2);
         return(areaCircle(radius));
     }
 }
