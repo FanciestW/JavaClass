@@ -1,14 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author William
- */
-public class POS extends javax.swing.JApplet {
+Midterm.java
+By: William Lin
+This is a JApplet that creates a table of how much a computer and its add on;s
+will cost with or without shipping and at a certain quantity.
+*/
+public class Midterm extends javax.swing.JApplet {
 
     /**
      * Initializes the applet POS
@@ -28,13 +24,13 @@ public class POS extends javax.swing.JApplet {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(POS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Midterm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(POS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Midterm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(POS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Midterm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(POS.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Midterm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -183,7 +179,12 @@ public class POS extends javax.swing.JApplet {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /*
+    This method is invoked when the Calculate without Shipping button is pressed.
+    It creates and prints a multi line string that shows a chart of how much the computer and its
+    peripherals cost at a certain quantity without shipping cost.
+    */
     private void withoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withoutActionPerformed
         String str = "Qty 1: " + "$" + Double.toString(calculateCost(1, false)) + "\n";
         for(int i = 100; i <= 1000; i = i + 100){
@@ -191,7 +192,12 @@ public class POS extends javax.swing.JApplet {
         }
         output.setText(str);
     }//GEN-LAST:event_withoutActionPerformed
-
+    
+    /*
+    This method is invoked when the Calculate with Shipping button is pressed.
+    It creates and prints a multi line string that shows a chart of how much the computer and its
+    peripherals cost at a certain quantity with shipping cost.
+    */
     private void withActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withActionPerformed
         String str = "Qty 1: " + "$" + Double.toString(calculateCost(1, true)) + "\n";
         for(int i = 100; i <= 1000; i = i + 100){
@@ -200,6 +206,10 @@ public class POS extends javax.swing.JApplet {
         output.setText(str);
     }//GEN-LAST:event_withActionPerformed
     
+    /**
+     * This method calculates the price of a computer plus all of its add on's
+     * @return the total of the computer plus all of the selected add on's
+     */
     public double calculateCost(){
         double cost = 300;
         if(item1.isSelected()){
@@ -223,6 +233,13 @@ public class POS extends javax.swing.JApplet {
         return(cost);
     }
     
+    /**
+     * This method calculates based on the quantity how much each computer and its add ons will cost
+     * after shipping or before shipping.
+     * @param qty the amount of computers that will be bought. use to find discounted price.
+     * @param ship if true, this method will calculate shipping cost.
+     * @return The discounted cost of the computer with or without shipping.
+     */
     public double calculateCost(int qty, boolean ship){
         double costPerUnit = calculateCost();
         double shipping = 0;
@@ -242,7 +259,12 @@ public class POS extends javax.swing.JApplet {
             return(getDiscountPackage(qty));
         }
     }
-    
+    /**
+     * This method calculates whether or not there is a discount added to the price.
+     * And if so, how much of a discount.
+     * @param qty the quantity used to determine discount.
+     * @return the discounted cost..
+     */
     public double getDiscountPackage(int qty){
         double costPerUnit = calculateCost();
         double discount = 0;
