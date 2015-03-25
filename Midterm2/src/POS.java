@@ -99,6 +99,11 @@ public class POS extends javax.swing.JApplet {
         fedex.setText("FedEx - 20%");
 
         with.setText("With Shipping");
+        with.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                withActionPerformed(evt);
+            }
+        });
 
         without.setText("Without Shpping");
         without.addActionListener(new java.awt.event.ActionListener() {
@@ -186,6 +191,14 @@ public class POS extends javax.swing.JApplet {
         }
         output.setText(str);
     }//GEN-LAST:event_withoutActionPerformed
+
+    private void withActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withActionPerformed
+        String str = "Qty 1: " + "$" + Double.toString(calculateCost(1, true)) + "\n";
+        for(int i = 100; i <= 1000; i = i + 100){
+            str = str.concat("Qty "+ i + ": " + "$" + Double.toString(calculateCost(i, true)) + "\n");
+        }
+        output.setText(str);
+    }//GEN-LAST:event_withActionPerformed
     
     public double calculateCost(){
         double cost = 300;
