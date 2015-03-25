@@ -20,31 +20,37 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Component id="with" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="without" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="with" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="without" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="item1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="item2" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="item3" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="item4" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="item5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="item6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="ground" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="air" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="fedex" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="297" max="32767" attributes="0"/>
                   </Group>
-                  <Component id="item1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="item2" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="item3" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="item4" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="item5" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="item6" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="ship1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ship2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="ship3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="307" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -69,16 +75,18 @@
               <Component id="item6" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="ship1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ship2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="ship3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ground" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="air" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="fedex" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="with" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="without" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="396" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jScrollPane1" pref="379" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -86,57 +94,36 @@
   <SubComponents>
     <Component class="javax.swing.JCheckBox" name="item1">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Webcam - $50"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="item2">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Mouse - $20"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="item3">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Keyboard - $25"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="item4">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Printer - $120"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="item5">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Headphones - $20"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="item6">
       <Properties>
-        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Speakers - $60"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="ship1">
+    <Component class="javax.swing.JRadioButton" name="ground">
       <Properties>
-        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
@@ -144,22 +131,16 @@
         <Property name="text" type="java.lang.String" value="Ground - 5%"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="ship2">
+    <Component class="javax.swing.JRadioButton" name="air">
       <Properties>
-        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Air - 10%"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JRadioButton" name="ship3">
+    <Component class="javax.swing.JRadioButton" name="fedex">
       <Properties>
-        <Property name="model" type="javax.swing.ButtonModel" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="default"/>
-        </Property>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="buttonGroup1"/>
         </Property>
@@ -192,5 +173,16 @@
         <Property name="text" type="java.lang.String" value="Add-ons:"/>
       </Properties>
     </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextPane" name="output">
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

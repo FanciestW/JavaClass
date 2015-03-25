@@ -66,13 +66,15 @@ public class POS extends javax.swing.JApplet {
         item4 = new javax.swing.JCheckBox();
         item5 = new javax.swing.JCheckBox();
         item6 = new javax.swing.JCheckBox();
-        ship1 = new javax.swing.JRadioButton();
-        ship2 = new javax.swing.JRadioButton();
-        ship3 = new javax.swing.JRadioButton();
+        ground = new javax.swing.JRadioButton();
+        air = new javax.swing.JRadioButton();
+        fedex = new javax.swing.JRadioButton();
         with = new javax.swing.JButton();
         without = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        output = new javax.swing.JTextPane();
 
         item1.setText("Webcam - $50");
 
@@ -86,15 +88,15 @@ public class POS extends javax.swing.JApplet {
 
         item6.setText("Speakers - $60");
 
-        buttonGroup1.add(ship1);
-        ship1.setSelected(true);
-        ship1.setText("Ground - 5%");
+        buttonGroup1.add(ground);
+        ground.setSelected(true);
+        ground.setText("Ground - 5%");
 
-        buttonGroup1.add(ship2);
-        ship2.setText("Air - 10%");
+        buttonGroup1.add(air);
+        air.setText("Air - 10%");
 
-        buttonGroup1.add(ship3);
-        ship3.setText("FedEx - 20%");
+        buttonGroup1.add(fedex);
+        fedex.setText("FedEx - 20%");
 
         with.setText("With Shipping");
 
@@ -110,6 +112,8 @@ public class POS extends javax.swing.JApplet {
 
         jLabel2.setText("Add-ons:");
 
+        jScrollPane1.setViewportView(output);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,25 +121,29 @@ public class POS extends javax.swing.JApplet {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(with)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(without))
-                    .addComponent(item1)
-                    .addComponent(item2)
-                    .addComponent(item3)
-                    .addComponent(item4)
-                    .addComponent(item5)
-                    .addComponent(item6)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(ship1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ship2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ship3))
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addContainerGap(307, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(with)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(without))
+                            .addComponent(item1)
+                            .addComponent(item2)
+                            .addComponent(item3)
+                            .addComponent(item4)
+                            .addComponent(item5)
+                            .addComponent(item6)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ground)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(air)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(fedex))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(0, 297, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,20 +166,25 @@ public class POS extends javax.swing.JApplet {
                 .addComponent(item6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ship1)
-                    .addComponent(ship2)
-                    .addComponent(ship3))
+                    .addComponent(ground)
+                    .addComponent(air)
+                    .addComponent(fedex))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(with)
                     .addComponent(without))
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void withoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_withoutActionPerformed
-        // TODO add your handling code here:
-        System.err.println(calculateCost());
+        String str = "Qty 1: " + "$" + Double.toString(calculateCost(1, false)) + "\n";
+        for(int i = 100; i <= 1000; i = i + 100){
+            str = str.concat("Qty "+ i + ": " + "$" + Double.toString(calculateCost(i, false)) + "\n");
+        }
+        output.setText(str);
     }//GEN-LAST:event_withoutActionPerformed
     
     public double calculateCost(){
@@ -197,8 +210,42 @@ public class POS extends javax.swing.JApplet {
         return(cost);
     }
     
+    public double calculateCost(int qty, boolean ship){
+        double costPerUnit = calculateCost();
+        double shipping = 0;
+        if(ship == true){
+            if(ground.isSelected()){
+                shipping = 1.05;
+            }
+            if(air.isSelected()){
+                shipping = 1.1;
+            }
+            if(fedex.isSelected()){
+                shipping = 1.2;
+            }
+            return(getDiscountPackage(qty) * shipping);
+        }
+        else{
+            return(getDiscountPackage(qty));
+        }
+    }
+    
+    public double getDiscountPackage(int qty){
+        double costPerUnit = calculateCost();
+        double discount = 0;
+        int i = 199;
+        while(i <= qty){
+            discount = discount + .01;
+            i = i + 100;
+        }
+        return(costPerUnit * qty * (1 - discount));
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton air;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton fedex;
+    private javax.swing.JRadioButton ground;
     private javax.swing.JCheckBox item1;
     private javax.swing.JCheckBox item2;
     private javax.swing.JCheckBox item3;
@@ -207,9 +254,8 @@ public class POS extends javax.swing.JApplet {
     private javax.swing.JCheckBox item6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JRadioButton ship1;
-    private javax.swing.JRadioButton ship2;
-    private javax.swing.JRadioButton ship3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextPane output;
     private javax.swing.JButton with;
     private javax.swing.JButton without;
     // End of variables declaration//GEN-END:variables

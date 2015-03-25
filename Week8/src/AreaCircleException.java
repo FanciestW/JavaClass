@@ -36,7 +36,7 @@ public class AreaCircleException{
         boolean check = true;
         while(check){
            try{
-               String Strinput =JOptionPane.showInputDialog(prompt + ": ");
+               String Strinput = JOptionPane.showInputDialog(prompt + ": ");
                if(Strinput == null){
                    System.exit(0);
                }
