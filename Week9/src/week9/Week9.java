@@ -1,22 +1,15 @@
 package week9;
 import java.awt.*;
+import java.math.BigInteger;
 
 public class Week9{
-    public static double distance (Point p1, Point p2) {
-        int dx = p1.x - p2.x;
-        int dy = p1.y - p2.y;
-        return Math.sqrt (dx*dx + dy*dy);
+    
+    public static void main(String[] args){
+        int x = 2147483647;
+        int y = 2147483647;
+        BigInteger notSoBig = BigInteger.valueOf(x);
+        BigInteger bigger = BigInteger.valueOf(y);
+        BigInteger big = bigger.multiply(notSoBig);
+        System.out.println(big);
     }
-    public static Point findCenter (Rectangle box) {
-        int x = box.x + box.width/2;
-        int y = box.y + box.height/2;
-        return new Point (x, y);
-    }
-    public static void main (String[] args) {
-        Point blank = new Point (5, 8);
-        Rectangle rect = new Rectangle (0, 2, 4, 4);
-        Point center = findCenter (rect);
-        double dist = distance (center, blank);
-        System.out.println (dist);
-    } 
 }
