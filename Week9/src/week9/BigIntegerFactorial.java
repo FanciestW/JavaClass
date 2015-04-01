@@ -21,7 +21,7 @@ public class BigIntegerFactorial{
         //Integer values only go up to 2,147,483,647 and down to –2,147,483,648. 
         for(int i = 1; i <= 30; i++){
             System.out.print(i + ": ");
-            System.out.println(factorialBig(i));
+            System.out.println(factorial(i));
         }
     }
     /**
@@ -29,19 +29,14 @@ public class BigIntegerFactorial{
      * @param num the int which we will find the factorial of.
      * @return the factorial of num.
      */
-    public static int factorial(int num){
-        if(num == 0){
-            return 1;
+    public static BigInteger factorial(int num){
+        BigInteger nu = BigInteger.valueOf(num);
+        for(int i = num - 1; i > 0; i--){
+            BigInteger m = BigInteger.valueOf(i);
+            BigInteger n = BigInteger.valueOf(num);
+            nu = nu.multiply(m);
         }
-        else{
-            return(num * factorial(num - 1));
-        }        
+        return nu;
     }
-    
-    public static BigInteger factorialBig(int n){
-        for(int i = n-1; i > 0; i--){
-            n = n * i;
-        }
-        return BigInteger.valueOf(n);
-    }
+
 }
