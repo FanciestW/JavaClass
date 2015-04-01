@@ -33,7 +33,6 @@ public class BigIntegerFactorial{
         BigInteger nu = BigInteger.valueOf(num);
         for(int i = num - 1; i > 0; i--){
             BigInteger m = BigInteger.valueOf(i);
-            BigInteger n = BigInteger.valueOf(num);
             nu = nu.multiply(m);
         }
         return nu;
