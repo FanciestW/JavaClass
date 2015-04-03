@@ -15,8 +15,16 @@ public static void main (String[] args) {
  printPoint (p2);
 } 
 
-The output of this is:
+The output is:
 (5, 8)
 (5, 8)
 
 This is the output because:
+
+This occurs because first in the main method creates a new rectangle called "box1" which is assigned a starting point of (2,4) a width of 7 and a height of 9. Point p1 is created & is equal to the findCenter method which takes in the points from box1. In the findCenter method, int x is equal to box.x + box.width/2. This means int x is equal to 5 because 2 + 3.5 = 5 because the 3.5 rounds down to 3. int y is equal to 8. The point is returned (5, 8). Now back in the main method printPoint is called for & the point (5,8)is carried over to the printPoint method. This method simply prints x + , + y which is (5, 8). 
+Now back to the main method again, box1 is told to grow (1, 1) which means that the new points will be (1, 3, 9, 11). So then p2 is created & equal to the findCenter method. int x = 5 and int y = 8. Just like before, a point (5, 8) is returned. Then the print point method is called which simply prints (5,8).
+The result is:
+(5, 8)
+(5, 8)
+
+p1 and p2 are not aliased because p1 and p2 just happen to both add up to (5, 8). They're not aliased because the values/dimensions of p1 and p2 are different. Also when Point p1 & Point p2 are created in the main method it is creating a totally NEW point, not the same.
