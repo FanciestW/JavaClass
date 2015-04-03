@@ -25,11 +25,13 @@ public class Score {
         BufferedReader inputReader = new BufferedReader (new InputStreamReader(new FileInputStream(filename)));
         String line;
         int total = 0;
+        int i = 0;
         while((line = inputReader.readLine()) != null){
             int value = Integer.parseInt(line);
             total = total + value;
+            i++;
         }
         inputReader.close();
-        return(total);
+        return(total/i);
     }
 }
