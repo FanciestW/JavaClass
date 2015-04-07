@@ -10,15 +10,6 @@ public class Scrabble{
     
     public static void main(String[] args){
         Tile tile = new Tile('Z', 10);
-        printTile(tile);
+        Tile.printTile(tile);
     }
-    
-    /**
-     * This method prints the given Tile.
-     * @param tile used to print the Scrabble letter and value.
-     */
-    public static void printTile(Tile tile){
-        System.out.println(tile.letter + ", " + tile.value);
-    }
-    
 }

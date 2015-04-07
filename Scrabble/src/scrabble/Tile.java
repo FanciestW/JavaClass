@@ -17,4 +17,12 @@ public class Tile{
         this.value = value;
     }
     
+    /**
+     * This method prints the given Tile.
+     * @param tile used to print the Scrabble letter and value.
+     */
+    public static void printTile(Tile tile){
+        System.out.println(tile.letter + ", " + tile.value);
+    }
+    
 }
