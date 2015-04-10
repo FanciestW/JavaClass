@@ -7,6 +7,15 @@ public class Arrays{
         for(int i = 0; i < numbers.length; i++){
             numbers[i] = i + 1;
         }
+        for(int i = 0; i < 25; i++){
+            System.out.println(randomInt(0, 10));
+            try{
+                Thread.sleep(1000);
+            }
+            catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+        }
     }
     
     /**
@@ -60,8 +69,8 @@ public class Arrays{
      */
     public static int randomInt(int low, int high){
         double x = Math.random();
-        x += low;
         x *= high;
+        x += low;        
         return (int) Math.round(x);
     }
 }

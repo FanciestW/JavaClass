@@ -1,0 +1,28 @@
+public static int banana (int[] a) {
+ int grape = 0;
+ int i = 0;
+ while (i < a.length) {
+ grape = grape + a[i];
+ i++;
+ }
+ return grape;
+}
+
+public static int apple (int[] a, int p) {
+ int i = 0;
+ int pear = 0;
+ while (i < a.length) {
+ if (a[i] == p) pear++;
+ i++;
+ }
+ return pear;
+}
+public static int grapefruit (int[] a, int p) {
+ for (int i = 0; i<a.length; i++) {
+ if (a[i] == p) return i;
+ }
+ return -1;
+} 
+
+Description:
+The first method we see is the banana method. It returns an int value and takes an int array or int[] named a. Inside the banana method an int variable is made named grape and is set to 0. Then another int variable is made named i and is set to 0 also. Then there is a while loop which runs when i is less than the length of array a. so as long as i is less than array a it'll loop. in the loop grape is set to its own value plus the value of array a at the i-th index. Then at the end of the loop i is incremented. So basically this method runs through a whole int array and adds up all their values. Then it returns the total which is the grape variable. So method banana takes an int array and adds up all the ints in the array and returns the answer using the variable grape. The next method is the apple method, which returns an int and takes an int array(int[]) named a, and an int named p. In the method an int named i is created and it is set to 0. Then a int variable is created named pear and set to 0 also. Then a while loop is used and it runs as long as i is less than the length of array a. And in the while loop it checks if the array at the i-th idex is equal to the int p. If it is it adds 1 to pear. and at the end of the loop i is incremented. So basically this method takes an int array and an int and check how many times that int appears in the int array. Then it returns the count. The variable pear is a counter for how many times a certain int is in an array. The next method, grapefruit, returns an int value and takes an int[] named a and an int named p. This method checks int[] a for the first occurance of the int p. It then returns the index of the first time int p is found in int[] a. If int p does not appear in int[] a , then the value -1 is returned. 
