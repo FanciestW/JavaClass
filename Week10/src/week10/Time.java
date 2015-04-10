@@ -1,4 +1,4 @@
-package chapter9;
+package week10;
 
 class Time{
     int hour, minute;

@@ -1,7 +1,8 @@
 /*
 Rational.java
 By: William Lin
-This this a class definition.
+This this a class definition. Used to create Rationals and modifies them along
+with printing them in a standard format.
 */
 
 package rational;

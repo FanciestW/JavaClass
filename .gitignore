@@ -33,6 +33,13 @@
 /MoreDates/build/
 /Rational/nbproject/private/
 /Rational/build/
+<<<<<<< HEAD
 /Arrays/nbproject/private/
 /Arrays/build/
 /Week11/nbproject/private/
+=======
+/Week10/build/
+/Week10/nbproject/private/
+/Scores/nbproject/private/
+/Scores/build/
+>>>>>>> 309c9064dfe1258eb5a4d80a0167ed8123eaf3fa
