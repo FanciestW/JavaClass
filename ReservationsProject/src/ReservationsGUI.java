@@ -49,13 +49,13 @@ public class ReservationsGUI extends javax.swing.JFrame {
         timeLabel.setText("Time:");
 
         timeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5:30pm", "5:45pm", "6:00pm", "6:15pm", "6:30pm", "6:45pm", "7:00pm", "7:15pm", "7:30pm", "7:45pm", "8:00pm", "8:15pm", "8:30pm" }));
-
-        reserveButton.setText("Reserve");
-        reserveButton.addActionListener(new java.awt.event.ActionListener() {
+        timeComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reserveButtonActionPerformed(evt);
+                timeComboBoxActionPerformed(evt);
             }
         });
+
+        reserveButton.setText("Reserve");
 
         previousReservationsLabel.setText("Tonight's Reservations:");
 
@@ -153,10 +153,6 @@ public class ReservationsGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void reserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_reserveButtonActionPerformed
-
     private void displayReservationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayReservationsButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_displayReservationsButtonActionPerformed
@@ -174,6 +170,10 @@ public class ReservationsGUI extends javax.swing.JFrame {
         //Briana
         System.exit(0);
     }//GEN-LAST:event_exitMenuActionPerformed
+
+    private void timeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_timeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_timeComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
