@@ -1,0 +1,31 @@
+public static int[] make (int n) {
+	int[] a = new int[n];
+	for (int i=0; i<n; i++) {
+		a[i] = i+1;
+	}
+	return a;
+}
+public static void dub (int[] jub) {
+	for (int i=0; i<jub.length; i++) {
+		jub[i] *= 2;
+	}
+}
+public static int mus (int[] zoo) {
+	int fus = 0;
+	for (int i=0; i<zoo.length; i++) {
+		fus = fus + zoo[i];
+	}
+	return fus;
+}
+
+public static void main (String[] args) {
+	int[] bob = make (5);
+	dub (bob);
+	System.out.println (mus (bob));
+} 
+
+The output:
+30
+
+This is the output because:
+Let's look at all the methods. The make() method returns an int[] and takes an int named n as a parameter. The the make method another int[] is created and named a. It's length is set to the value of int n. Then a for loop is started which int i = 0 and states that it will loop as loop as i < n and after each loop add 1 to i. And it sets a[i] to i + 1. and returns the array a. The make method basically returns an array that counts by 1 to the int you give it. So if n = 10 then it will make an array from 1 - 10. The dub method returns nothing or void and takes an int[] named jub. This method takes the array and multiplies all the values in the array by 2. This method modifies the array that is passed into it. The next method, mus returns an int value and takes an int[] named zoo. The mus method makes an int variable named fus and sets it equal to 0. Then it has a for loop that that goes through the whole zoo array and adds every one of its value to fus. Then it returns the fus int. So the mus method takes a int[] array and adds up all the values and returns it. So in the main method it creates a new int[] array named bob and sets it equal to the return value of bob(5) So bob is an array with the value 1 - 5. Then the main method invokes dub on the array bob. Which double all the values of bob. Then it prints the return value of mus(bob) which is all the value of bob added up. So it add 2 + 4 + 6 + 8 + 10 which is 30.

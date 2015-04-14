@@ -71,6 +71,6 @@ public class Arrays{
         double x = Math.random();
         x *= high;
         x += low;        
-        return (int) Math.round(x);
+        return (int) x;
     }
 }
