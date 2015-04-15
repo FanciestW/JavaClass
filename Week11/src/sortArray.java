@@ -10,8 +10,10 @@ public class sortArray{
         int[] array = randomIntArray(3, 0, 10);
         printArray(array);
         System.out.println("Break");
+        swapElement(array, 1, 2);
+        printArray(array);
         System.out.println(indexOfMaxInRange(array, 0, 3));
-        sortArray(array);
+       sortArray(array);
         printArray(array);
     }
     
@@ -87,10 +89,17 @@ public class sortArray{
     }
     
     //***fix this method*******
+    /**
+     * This method takes an int[] array and sorts it from largest to smallest.
+     * @param array the array that is to be sorted.
+     */
     public static void sortArray(int[] array){
         for(int i = 0; i < array.length; i++){
             int index = indexOfMaxInRange(array, i, array.length);
-            swapElement(array, array[index], array[i]);
-        }
+            if(index != i){
+                swapElement(array, array[index], array[i]);
+            }
+            else;
+        } 
     }
 }
