@@ -7,6 +7,13 @@ range from -5 to 15. It then creates a histogram of the array for the number 0 -
 
 public class arrayHistogram {
     
+    public static void main(String[] args){
+        int[] hist = randomIntArray(10, -5, 15);
+        printArray(hist);
+        System.out.println("break");
+        printArray(arrayHist(hist));
+    }
+    
     /**
      * THis method generates a random int value within the low and high value.
      * @param low the lowest value the random generated int can be
@@ -51,16 +58,13 @@ public class arrayHistogram {
         return hist;
     }
     
+    /**
+     * This method prints the int[] array that is passed in.
+     * @param array The array that is printed.
+     */
     public static void printArray(int[] array){
         for(int i = 0; i < array.length; i++){
             System.out.println(array[i]);
         }
-    }
-    
-    public static void main(String[] args){
-        int[] hist = randomIntArray(10, -5, 15);
-        printArray(hist);
-        System.out.println("break");
-        printArray(arrayHist(hist));
     }
 }
