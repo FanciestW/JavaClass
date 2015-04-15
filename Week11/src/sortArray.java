@@ -7,10 +7,12 @@ This program takes an int[] array and sorts in from largest to smallest.
 public class sortArray{
     
     public static void main(String[] args){
-        int[] array = randomIntArray(10, 0, 10);
+        int[] array = randomIntArray(3, 0, 10);
         printArray(array);
         System.out.println("Break");
-        System.out.println(indexOfMaxInRange(array, 0, 10));
+        System.out.println(indexOfMaxInRange(array, 0, 3));
+        sortArray(array);
+        printArray(array);
     }
     
     /**
