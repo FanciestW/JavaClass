@@ -7,13 +7,10 @@ This program takes an int[] array and sorts in from largest to smallest.
 public class sortArray{
     
     public static void main(String[] args){
-        int[] array = randomIntArray(3, 0, 10);
+        int[] array = randomIntArray(10, 0, 10);
         printArray(array);
         System.out.println("Break");
-        swapElement(array, 1, 2);
-        printArray(array);
-        System.out.println(indexOfMaxInRange(array, 0, 3));
-       sortArray(array);
+        sortArray(array);
         printArray(array);
     }
     
@@ -64,7 +61,7 @@ public class sortArray{
      * @return the index where the max value first occurs.
      */
     public static int indexOfMaxInRange(int[] array, int low, int high){
-        int index = 0;
+        int index = low;
         int max = low;
         for(int i = low; i < high; i++){
             if(array[i] > max){
@@ -95,11 +92,13 @@ public class sortArray{
      */
     public static void sortArray(int[] array){
         for(int i = 0; i < array.length; i++){
-            int index = indexOfMaxInRange(array, i, array.length);
-            if(index != i){
-                swapElement(array, array[index], array[i]);
+            int indexMax = indexOfMaxInRange(array, i, array.length);
+            System.out.println(i + ", " + indexMax);
+            if(i != indexMax){
+                printArray(array);
+                swapElement(array, i, indexMax);
             }
-            else;
-        } 
+            else printArray(array);
+        }
     }
 }
