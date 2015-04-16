@@ -8,8 +8,9 @@ public class sortArray{
     
     public static void main(String[] args){
         int[] array = randomIntArray(10, 0, 10);
+        System.out.println("Original:");
         printArray(array);
-        System.out.println("Break");
+        System.out.println("Sorted:");
         sortArray(array);
         printArray(array);
     }
@@ -62,8 +63,8 @@ public class sortArray{
      */
     public static int indexOfMaxInRange(int[] array, int low, int high){
         int index = low;
-        int max = low;
-        for(int i = low; i < high; i++){
+        int max = array[low];
+        for(int i = low; i < array.length; i++){
             if(array[i] > max){
                 max = array[i];
                 index = i;
@@ -93,12 +94,10 @@ public class sortArray{
     public static void sortArray(int[] array){
         for(int i = 0; i < array.length; i++){
             int indexMax = indexOfMaxInRange(array, i, array.length);
-            System.out.println(i + ", " + indexMax);
             if(i != indexMax){
-                printArray(array);
                 swapElement(array, i, indexMax);
             }
-            else printArray(array);
+            else;
         }
     }
 }
