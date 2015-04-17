@@ -53,6 +53,8 @@ public class arrayHistogram {
         for(int i = 0; i < array.length; i++){
             int index = array[i];
             if(index >= 0 && index <= 10) hist[index]++;
+            else if(index < 0) hist[0]++;
+            else if(index > 10) hist[10]++;
             else;
         }
         return hist;
