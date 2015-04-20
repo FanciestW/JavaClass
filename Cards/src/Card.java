@@ -1,5 +1,6 @@
 public class Card{
     
+    //Make the String array for suits and ranks an instance static variable.
     int suit, rank;
     
     public Card(int suit, int rank){
@@ -17,9 +18,45 @@ public class Card{
      * @param card The Card object that is to be printed.
      */
     public static void printCard(Card card){
-        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};
+        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};  //Make the String array for suits and ranks an instance static variable.
         String ranks[] = {"narf", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
         System.out.println(ranks[card.rank] + " of " + suits[card.suit]);
+    }
+    
+    /**
+     * This method takes a String that depicts the standard format of a card
+     * The method then searches for the corresponding suit and rank for the card
+     * If either the suit or rank is not present, then it returns a null Card object.
+     * @param card The string that depicts the standard format of a card.
+     * @return a Card object that corresponds to the string that is given.
+     */
+    public static Card parseCard(String card){
+        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};  //Make the String array for suits and ranks an instance static variable.
+        String ranks[] = {"narf", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
+        int space1 = card.indexOf(" ");
+        if(space1 == -1){
+            return new Card();
+        }
+        int space2 = card.lastIndexOf(" ");
+        if(space2 == -1){
+            return new Card();
+        }
+        String rankStr = card.substring(0, space1);
+        String suitStr = card.substring(space2 + 1, card.length());
+        int rank = 0;   //Change int variable to: int rank = 0, suit = 0;
+        int suit = 0;
+        for(int i = 0; i < suits.length; i++){
+            if(suits[i].equals(suitStr)){
+                suit = i;   //Change conditional to: if() [body];
+            }
+        }
+        for(int n = 0; n < ranks.length; n++){
+            if(ranks[n].equals(rankStr)){
+                rank = n;   //Change conditional to: if() [body];
+            }
+        }
+        System.out.println(suit + ", " + rank);
+        return new Card(suit, rank);
     }
     
     /**
@@ -46,5 +83,27 @@ public class Card{
             }
         }
         return deck;
+    }
+    
+    /**
+     * This method takes an array of Cards and finds the scoreOf it by adding the 
+     * rank up, with the ace as 1 and the face cards all as 10 and the number cards as themselves.
+     * @param hand The array of Cards that make up the hand.
+     * @return the score of the hand.
+     */
+    public static int handScore(Card[] hand){
+        int score = 0;
+        for(int i = 0; i < hand.length; i++){
+            if(hand[i].rank > 0 && hand[i].rank < 11){
+                score += hand[i].rank;
+            }
+            else if(hand[i].rank > 10 && hand[i].rank < 14){
+                score += 10;
+            }
+            else{
+                System.err.println("Card " + i + ": Rank out of range");
+            }
+        }
+        return score;
     }
 }
