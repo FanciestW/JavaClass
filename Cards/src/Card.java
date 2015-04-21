@@ -163,7 +163,7 @@ public class Card{
     /**
      * This method checks to see if the hand or array of cards you have is a three of a kind.
      * @param hand the array of Card objects that will be checked for a three of a kind.
-     * @return a boolen value for whether or not there is a three of a kind in the hand.
+     * @return a boolean value for whether or not there is a three of a kind in the hand.
      */
     public static boolean isThreeKind(Card[] hand){
         int[] ranks = rankHist(hand);
