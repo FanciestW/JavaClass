@@ -14,6 +14,17 @@ public class Card{
     }
     
     /**
+     * This method prints an int[] array
+     * @param array The int[] array that is to be printed.
+     */
+    public static void printArray(int[] array){
+        for(int i = 0; i < array.length; i++){
+            System.out.print(array[i] + " ");
+        }
+        System.out.println();
+    }
+    
+    /**
      * Prints a given Card object.
      * @param card The Card object that is to be printed.
      */
@@ -105,5 +116,32 @@ public class Card{
             }
         }
         return score;
+    }
+    
+    /**
+     * This method takes an Array of Cards and makes an histogram of the suits.
+     * @param cards The array of Cards that will be used to populate the histogram.
+     * @return An int[] array that contains the histogram.
+     */
+    public static int[] suitHist(Card[] cards){
+        int[] suits = new int[4];
+        for(int i = 0; i < cards.length; i++){
+            suits[cards[i].suit]++;
+        }
+        return suits;
+    }
+    
+    /**
+     * This method looks through an array of Card objects and makes an histogram
+     * based on the ranks of the cards.
+     * @param cards The array of cards that will be used to make the histogram.
+     * @return the int[] array for the histogram.
+     */
+    public static int[] rankHist(Card[] cards){
+        int[] ranks = new int[13];
+        for(int i = 0; i < cards.length; i++){
+            ranks[((cards[i].rank) - 1)]++;
+        }
+        return ranks;
     }
 }

@@ -86,8 +86,7 @@ public class sortArray{
         array[index2] = hold;
     }
     
-    //***fix this method*******
-    /**
+     /**
      * This method takes an int[] array and sorts it from largest to smallest.
      * @param array the array that is to be sorted.
      */
