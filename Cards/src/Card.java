@@ -1,6 +1,5 @@
 public class Card{
     
-    //Make the String array for suits and ranks an instance static variable.
     int suit, rank;
     
     public Card(int suit, int rank){
@@ -66,7 +65,8 @@ public class Card{
                 rank = n;   //Change conditional to: if() [body];
             }
         }
-        System.out.println(suit + ", " + rank);
+        //Used for debugging parseCard method: 
+        //System.out.println(suit + ", " + rank);
         return new Card(suit, rank);
     }
     
