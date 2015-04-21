@@ -144,4 +144,13 @@ public class Card{
         }
         return ranks;
     }
+    
+    /**
+     * This method checks to see if the hand that is porvided has a flush.
+     * @param hand the array of Card objects that will be checked for a flush.
+     * @return a boolean value for whether or not there is a flush in the hand.
+     */
+    public static boolean isFlush(Card[] hand){
+                    
+    }
 }
