@@ -1,4 +1,4 @@
-package ReservationsProject;
+
 
 /*ReservationsGUI.java
  *Group members: Cameron Sheedy, Rahul Malhotra, William Lin, Anand Kumar, Briana Schmidt

@@ -6,18 +6,17 @@ Edited by William Lin
 This class will create an array of reservation objects and a capability to sort the array based on the time of the reservations.
 This program is assuming all times are in military format (00:00) to differentiate am and pm
  */
-package reservationslist;
 
 public class ReservationsList {
     Reservation [] reservationsArray;
     
     public ReservationsList (int length) {
-    this.reservationsArray = new Reservation[length];
+        this.reservationsArray = new Reservation[length];    
+    }
     
-}
     public void addArrayItem (int index, String name, String phone, String time, int numInParty) {
-        Reservation r1 = new Reservation (name, phone, time, numInParty);
-        reservationsArray[index] = r1;
+        //William: I changed the old code to make it like this. It works the same way.
+        reservationsArray[index] = new Reservation (name, phone, time, numInParty);
     }
 
    //Finds the hour of the string and returns a comparable int value
@@ -26,6 +25,7 @@ public class ReservationsList {
         William: Simplified the method to find where the ':' of the time is
         and make it return the int value of whatever is to the left of the ':'
         */
+        String time = a.time;
         return Integer.parseInt(time.substring(0, time.indexOf(":"))); 
     }
 
@@ -35,6 +35,7 @@ public class ReservationsList {
         William: Simplified the method to find where the ':' is in the time string
         and made it return the int value that is after the ':'
         */
+        String time = a.time;
         return Integer.parseInt(time.substring(time.indexOf(":") + 1, time.length()));
     }
 
@@ -57,9 +58,10 @@ public class ReservationsList {
     //Finds the index of the Reservation object with the smallest time
     private static int indexOfMinInRange (Reservation[] list, int startIndex) {
         int minIndex = 0;
-        int minTime = 2400;  //Highest possible time so we can keep undercutting it until we reach the minimum
+        //William: Changed 2400 to 1440 because there's 1440 minutes in a 24hr day.
+        int minTime = 1440;  //Highest possible time so we can keep undercutting it until we reach the minimum
         int i = startIndex;
-        while (i <= list.length-1) {
+        while (i <= list.length) { //William: Do not need to subtract 1 from the length or you will leave out the last reservation in the array.
             int time = time(list[i]);
             if (time <= minTime) {
                 minIndex = i;
@@ -74,10 +76,9 @@ public class ReservationsList {
     public static void sortArray (Reservation[] reservationsArray) { 
                 
         for (int i=0; i<=reservationsArray.length-1; i++) {
-            int swapIndex = 0;
-            int minTimeIndex = indexOfMinInRange(reservationsArray, swapIndex);
-            swapElement(reservationsArray, swapIndex, minTimeIndex);
-            swapIndex++;
+            //William: I Deleted: int swapIndex = 0; we should just use i since it keeps the same value as swapIndex.
+            int minTimeIndex = indexOfMinInRange(reservationsArray, i);
+            swapElement(reservationsArray, i, minTimeIndex);
         }
     } 
 
