@@ -28,7 +28,7 @@ public class Card{
      * @param card The Card object that is to be printed.
      */
     public static void printCard(Card card){
-        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};  //Make the String array for suits and ranks an instance static variable.
+        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};
         String ranks[] = {"narf", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
         System.out.println(ranks[card.rank] + " of " + suits[card.suit]);
     }
@@ -41,7 +41,7 @@ public class Card{
      * @return a Card object that corresponds to the string that is given.
      */
     public static Card parseCard(String card){
-        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};  //Make the String array for suits and ranks an instance static variable.
+        String suits[] = {"Clubs", "Diamond", "Hearts", "Spades"};
         String ranks[] = {"narf", "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
         int space1 = card.indexOf(" ");
         if(space1 == -1){
@@ -53,20 +53,17 @@ public class Card{
         }
         String rankStr = card.substring(0, space1);
         String suitStr = card.substring(space2 + 1, card.length());
-        int rank = 0;   //Change int variable to: int rank = 0, suit = 0;
-        int suit = 0;
+        int rank = 0, suit = 0;
         for(int i = 0; i < suits.length; i++){
-            if(suits[i].equals(suitStr)){
-                suit = i;   //Change conditional to: if() [body];
-            }
+            if(suits[i].equals(suitStr)) suit = i;
         }
         for(int n = 0; n < ranks.length; n++){
-            if(ranks[n].equals(rankStr)){
-                rank = n;   //Change conditional to: if() [body];
-            }
+            if(ranks[n].equals(rankStr)) rank = n;
         }
-        //Used for debugging parseCard method: 
-        //System.out.println(suit + ", " + rank);
+        /*
+        Used for debugging parseCard method: 
+        System.out.println(suit + ", " + rank);
+        */
         return new Card(suit, rank);
     }
     
