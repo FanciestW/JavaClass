@@ -5,7 +5,6 @@ Rahul did the Reservation class
 This class will create an object that holds the information to keep track of each reservation made.
  */
 
-
 public class Reservation {
     String name, phoneNum, time;
     int numInParty;

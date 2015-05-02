@@ -11,7 +11,8 @@ public class ReservationsList {
     Reservation [] reservationsArray;
     
     public ReservationsList (int length) {
-        this.reservationsArray = new Reservation[length];    
+    this.reservationsArray = new Reservation[length];
+    
     }
     
     public void addArrayItem (int index, String name, String phone, String time, int numInParty) {
@@ -61,7 +62,7 @@ public class ReservationsList {
         //William: Changed 2400 to 1440 because there's 1440 minutes in a 24hr day.
         int minTime = 1440;  //Highest possible time so we can keep undercutting it until we reach the minimum
         int i = startIndex;
-        while (i <= list.length) { //William: Do not need to subtract 1 from the length or you will leave out the last reservation in the array.
+        while (i <= list.length-1) { //We do need to subtract 1 because it is <=
             int time = time(list[i]);
             if (time <= minTime) {
                 minIndex = i;
