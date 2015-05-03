@@ -11,8 +11,11 @@ public class ReservationsList {
     Reservation [] reservationsArray;
     
     public ReservationsList (int length) {
-    this.reservationsArray = new Reservation[length];
-    
+        Reservation blank = new Reservation("","","",0);
+        this.reservationsArray = new Reservation[length];
+        for(int i = 0; i < this.reservationsArray.length; i++){
+            this.reservationsArray[i] = blank;
+        }
     }
     
     public void addArrayItem (int index, String name, String phone, String time, int numInParty) {
@@ -27,7 +30,10 @@ public class ReservationsList {
         and make it return the int value of whatever is to the left of the ':'
         */
         String time = a.time;
-        return Integer.parseInt(time.substring(0, time.indexOf(":"))); 
+        if(!time.equals("")){
+            return Integer.parseInt(time.substring(0, time.indexOf(":")));
+        }
+        return 24;
     }
 
     //Finds the minute of the string and returns a comparable int value
@@ -37,7 +43,10 @@ public class ReservationsList {
         and made it return the int value that is after the ':'
         */
         String time = a.time;
-        return Integer.parseInt(time.substring(time.indexOf(":") + 1, time.length()));
+        if(!time.equals("")){
+            return Integer.parseInt(time.substring(time.indexOf(":") + 1, time.length() - 1));
+        }
+        return 59;
     }
 
     //Takes the hour and minutes ints and creates a four digit int to create one comparable time int
@@ -62,7 +71,7 @@ public class ReservationsList {
         //William: Changed 2400 to 1440 because there's 1440 minutes in a 24hr day.
         int minTime = 1440;  //Highest possible time so we can keep undercutting it until we reach the minimum
         int i = startIndex;
-        while (i <= list.length-1) { //We do need to subtract 1 because it is <=
+        while (i <= list.length - 1) { //We do need to subtract 1 because it is <=
             int time = time(list[i]);
             if (time <= minTime) {
                 minIndex = i;
@@ -76,7 +85,7 @@ public class ReservationsList {
     //Sorts the array based on time
     public static void sortArray (Reservation[] reservationsArray) { 
                 
-        for (int i=0; i<=reservationsArray.length-1; i++) {
+        for (int i = 0; i <= reservationsArray.length - 1; i++) {
             //William: I Deleted: int swapIndex = 0; we should just use i since it keeps the same value as swapIndex.
             int minTimeIndex = indexOfMinInRange(reservationsArray, i);
             swapElement(reservationsArray, i, minTimeIndex);

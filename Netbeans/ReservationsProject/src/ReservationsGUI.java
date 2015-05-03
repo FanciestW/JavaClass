@@ -1,4 +1,3 @@
-package ReservationsProject;
 
 import javax.swing.JOptionPane;
 
@@ -7,7 +6,10 @@ import javax.swing.JOptionPane;
  *Briana did the visual applet
  */
 public class ReservationsGUI extends javax.swing.JFrame {
-
+    
+    ReservationsList reservations = new ReservationsList(20);
+    int index = 0;
+    
     public ReservationsGUI() {
         initComponents();
     }
@@ -50,7 +52,7 @@ public class ReservationsGUI extends javax.swing.JFrame {
 
         timeLabel.setText("Time:");
 
-        timeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5:30pm", "5:45pm", "6:00pm", "6:15pm", "6:30pm", "6:45pm", "7:00pm", "7:15pm", "7:30pm", "7:45pm", "8:00pm", "8:15pm", "8:30pm" }));
+        timeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "5:30 pm", "5:45 pm", "6:00 pm", "6:15 pm", "6:30 pm", "6:45 pm", "7:00 pm", "7:15 pm", "7:30 pm", "7:45 pm", "8:00 pm", "8:15 pm", "8:30 pm" }));
 
         reserveButton.setText("Reserve");
         reserveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -156,11 +158,79 @@ public class ReservationsGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void reserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reserveButtonActionPerformed
-        // TODO add your handling code here:
+        String name = nameTextField.getText();
+        String phone = phoneNumberTextField.getText();
+        String militarytime = militaryTime(String.valueOf(timeComboBox.getSelectedItem()));
+        int party = Integer.parseInt(String.valueOf(partyNumberComboBox.getSelectedItem()));
+        reservations.addArrayItem(index, name, phone, militarytime, party);
+        index++;
+        JOptionPane.showMessageDialog(null, "Your Reservation is at: " + String.valueOf(timeComboBox.getSelectedItem()) + " For a Party of: " + party, "Reserved", JOptionPane.INFORMATION_MESSAGE);
+        nameTextField.setText("");
+        phoneNumberTextField.setText("");
+        partyNumberComboBox.setSelectedIndex(0);
+        timeComboBox.setSelectedIndex(0);
+        reservationsTextArea.setText("");
     }//GEN-LAST:event_reserveButtonActionPerformed
-
+    
+    /**
+     * This method takes the time as a string and returns it in military time. 
+     * @param time the time in standard format. ex: 9:30 pm
+     * @return Military time for the standard time that was passed in as a parameter.
+     */
+    public static String militaryTime(String time){
+        int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
+        int min = Integer.parseInt(time.substring(time.indexOf(":") + 1, time.indexOf(" ")));
+        String when = time.substring(time.indexOf(" ") + 1, time.length());
+        if(when.equals("pm")){
+            hour += 12;
+        }
+        time = Integer.toString(hour) + ":" + Integer.toString(min) + " ";        
+        return time;
+    }
+    
+    /**
+     * This method takes the military time as a string and returns it in standard time format
+     * @param time String of military time that is to be converted to standard time.
+     * @return the standard time format of the military time. If incorrect military time then
+     * returns "Invalid Time"
+     */
+    public static String standardTime(String time){
+        int hour = Integer.parseInt(time.substring(0, time.indexOf(":")));
+        int min = Integer.parseInt(time.substring(time.indexOf(":") + 1, time.length()));
+        if(hour >= 12 && hour < 24){ 
+            String when = "pm";
+            hour -= 12;
+            time = String.valueOf(hour) + ":" + String.valueOf(min) + " " + when;
+            System.err.println(time);
+            return time;
+        }
+        else if(hour < 12 && hour > 0){
+            String when = "am";
+            time = String.valueOf(hour) + ":" + String.valueOf(min) + " " + when;
+            System.err.println(time);
+            return time;
+        }
+        else if(hour == 24 || hour == 0){
+            String when = "am";
+            hour = 12;
+            time = String.valueOf(hour) + ":" + String.valueOf(min) + " " + when;
+            System.err.println(time);
+            return time;
+        }
+        else{
+            System.err.println("Invalid Time");
+            return "Invalid Time";
+        }
+    }
+    
     private void displayReservationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayReservationsButtonActionPerformed
-        // TODO add your handling code here:
+        Reservation[] reserves = reservations.reservationsArray;
+        ReservationsList.sortArray(reserves);
+        String text = "";
+        for(int i = 0; i < reserves.length; i++){
+            text = text + ("Name: " + reserves[i].name + "\t# in Party: " + reserves[i].numInParty + "\tPhone#: " + reserves[i].phoneNum + "\tTime: " + reserves[i].time + "\n");
+        }
+        reservationsTextArea.setText(text);
     }//GEN-LAST:event_displayReservationsButtonActionPerformed
 
     private void deleteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuActionPerformed
