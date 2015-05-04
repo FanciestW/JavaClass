@@ -1,4 +1,4 @@
-frontier 19
-sentra 28
-rogue 20
-pathfinder 23
+Frontier 19
+Sentra 28
+Rogue 20
+Pathfinder 23

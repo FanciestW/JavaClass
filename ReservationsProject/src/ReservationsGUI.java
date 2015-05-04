@@ -225,12 +225,15 @@ public class ReservationsGUI extends javax.swing.JFrame {
     
     private void displayReservationsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayReservationsButtonActionPerformed
         Reservation[] reserves = reservations.reservationsArray;
-        ReservationsList.sortArray(reserves);
+        //ReservationsList.sortArray(reserves); //Uncomment this line and you'll see that the displayed times skip the first line.
         String text = "";
         for(int i = 0; i < reserves.length; i++){
             text = text + ("Name: " + reserves[i].name + "\t# in Party: " + reserves[i].numInParty + "\tPhone#: " + reserves[i].phoneNum + "\tTime: " + reserves[i].time + "\n");
         }
+        System.out.println(text);
         reservationsTextArea.setText(text);
+        //
+        
     }//GEN-LAST:event_displayReservationsButtonActionPerformed
 
     private void deleteMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteMenuActionPerformed
