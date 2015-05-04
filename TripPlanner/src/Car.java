@@ -20,7 +20,7 @@ public class Car {
     }
 
     public static String findCar(String make, String model) throws IOException, FileNotFoundException{
-        String file = ("C:\\Users\\William\\Documents\\JavaClass\\TripPlanner\\src\\makes\\" + make.toLowerCase() + ".txt");
+        String file = ("C:\\Users\\William\\Documents\\JavaClass\\Netbeans\\TripPlanner\\src\\makes\\" + make.toLowerCase() + ".txt");
         BufferedReader read = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String line;
         while((line = read.readLine()) != null){
