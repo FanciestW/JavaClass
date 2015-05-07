@@ -3,9 +3,11 @@
  */
 
 import java.io.*;
+import javax.swing.*;
 
 public class GUI extends javax.swing.JFrame {
-
+    
+    int[] mpg;
     /**
      * Creates new form GUI
      */
@@ -26,6 +28,8 @@ public class GUI extends javax.swing.JFrame {
         makeList = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         modelList = new javax.swing.JComboBox();
+        jLabel3 = new javax.swing.JLabel();
+        labelMPG = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TripPlanner");
@@ -37,7 +41,15 @@ public class GUI extends javax.swing.JFrame {
         makeList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select A Make", "Nissan", "Toyota" }));
         makeList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                makeListActionPerformed(evt);
+                try{
+                    makeListActionPerformed(evt);
+                }
+                catch(FileNotFoundException ex){
+                    
+                }
+                catch(IOException ex){
+
+                }
             }
         });
 
@@ -45,6 +57,16 @@ public class GUI extends javax.swing.JFrame {
         jLabel2.setText("Model:");
 
         modelList.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        modelList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modelListActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("MPG");
+
+        labelMPG.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -58,8 +80,12 @@ public class GUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(modelList, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(makeList, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(makeList, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(labelMPG)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -72,25 +98,129 @@ public class GUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(modelList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(labelMPG))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void makeListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeListActionPerformed
+    public static void printArray(String[] make, int[] mpg){
+        for(int i = 0; i < make.length; i++){
+            System.out.println(make[i] + ", " + mpg[i]);
+        }
+    }
+    
+    private void makeListActionPerformed(java.awt.event.ActionEvent evt) throws IOException, FileNotFoundException{//GEN-FIRST:event_makeListActionPerformed
         int index = makeList.getSelectedIndex();
-        if(index != 0 || index == -1){
+        if(index != 0 && index != -1){
             String make = String.valueOf(makeList.getItemAt(index)).toLowerCase();
-            System.err.println(make);
+            try{
+                String models[] = getModels(make);
+                mpg = getMPG(models);
+                setModels(models);
+            }
+            catch(FileNotFoundException ex){
+                System.out.println("File Not Found 2");
+            }
+            catch(IOException ex){
+                System.out.println("Error Reading File 2");
+            }
+        }
+        else{
+            String[] none = {};
+            modelList.setModel(new DefaultComboBoxModel(none));
         }
     }//GEN-LAST:event_makeListActionPerformed
 
+    private void modelListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelListActionPerformed
+        if(modelList.getSelectedIndex() != 0){
+            getMPG();
+        }
+        else{
+            labelMPG.setText("");
+        }
+    }//GEN-LAST:event_modelListActionPerformed
+    
+    /**
+     * This method gets all the models for the selected make from the right file.
+     * @param make The make that you want all the models of.
+     * @return an String array of all the models with mpg.
+     */
+    public String[] getModels(String make)throws IOException, FileNotFoundException{
+        String dir = System.getProperty("user.dir") + "\\src\\makes\\";
+        String file = dir + make + ".txt";
+        BufferedReader read = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+        String index;
+        int i = 0;
+        while((index = read.readLine()) != null){
+            i++;
+        }
+        read.close();
+        BufferedReader readAgain = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+        String[] models = new String[i];
+        String line;
+        i = 0;
+        while((line = readAgain.readLine()) != null){
+            models[i] = line;
+            i++;
+        }
+        readAgain.close();
+        return models;
+    }
+    
+    /**
+     * This method takes a string of models with their mpg and returns an int[] of mpgs.
+     * @param models The array of models with there mpg's attached.
+     * @return an array of ints that represents the mpg's.
+     */
+    public int[] getMPG(String[] models){
+        int[] mpg = new int[models.length];
+        for(int i = 0; i < models.length; i++){
+            int MPG = Integer.parseInt(models[i].substring(models[i].indexOf(":") + 1, models[i].length()));
+            mpg[i] = MPG;
+        }
+        return mpg;
+    }
+    
+    public void getMPG(){
+        int modelIndex = modelList.getSelectedIndex();
+        int MPG = mpg[modelIndex];
+        labelMPG.setText(String.valueOf(MPG));
+    }
+    
+    /**
+     * This method sets the models combo box to the models.
+     * @param models the array of the models.
+     */
+    public void setModels(String[] models){
+        formatModel(models);
+        DefaultComboBoxModel model = new DefaultComboBoxModel(models);
+        modelList.setModel(model);
+    }
+    
+    /**
+     * Takes an array of the models with the mpg and gets rid of the mpg part.
+     * @param models
+     * @return the models without mpg.
+     */
+    public String[] formatModel(String[] models){
+        String[] newModels = new String[models.length];
+        for(int i = 0; i < models.length; i++){
+            String index = models[i];
+            String model = index.substring(0, index.indexOf(":"));
+            models[i] = model;
+        }
+        return newModels;
+    }
     
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws IOException, FileNotFoundException{
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -126,6 +256,8 @@ public class GUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel labelMPG;
     private javax.swing.JComboBox makeList;
     private javax.swing.JComboBox modelList;
     // End of variables declaration//GEN-END:variables
