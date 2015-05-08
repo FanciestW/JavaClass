@@ -40,8 +40,8 @@ public class GUI extends javax.swing.JFrame {
         galText = new javax.swing.JLabel();
         costField = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
+        reset = new javax.swing.JMenu();
+        javax.swing.JMenu exit = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TripPlanner");
@@ -50,7 +50,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setText("Make:");
 
         makeList.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        makeList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select A Make", "Nissan", "Toyota" }));
+        makeList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select A Make", "Nissan", "Toyota", "Mercedes-Benz" }));
         makeList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 try{
@@ -100,21 +100,21 @@ public class GUI extends javax.swing.JFrame {
 
         costField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jMenu3.setText("Reset");
-        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+        reset.setText("Reset");
+        reset.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu3MouseClicked(evt);
+                resetMouseClicked(evt);
             }
         });
-        jMenuBar2.add(jMenu3);
+        jMenuBar2.add(reset);
 
-        jMenu4.setText("Exit");
-        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+        exit.setText("Exit");
+        exit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu4MouseClicked(evt);
+                exitMouseClicked(evt);
             }
         });
-        jMenuBar2.add(jMenu4);
+        jMenuBar2.add(exit);
 
         setJMenuBar(jMenuBar2);
 
@@ -183,7 +183,7 @@ public class GUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     public static void printArray(String[] make, int[] mpg){
         for(int i = 0; i < make.length; i++){
             System.out.println(make[i] + ", " + mpg[i]);
@@ -253,16 +253,16 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
+    private void resetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resetMouseClicked
         makeList.setSelectedIndex(0);
         tripField.setText("");
         galText.setText("");
         costField.setText("");
-    }//GEN-LAST:event_jMenu3MouseClicked
+    }//GEN-LAST:event_resetMouseClicked
 
-    private void jMenu4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu4MouseClicked
+    private void exitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_exitMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_jMenu4MouseClicked
+    }//GEN-LAST:event_exitMouseClicked
     
     /**
      * This method gets all the models for the selected make from the right file.
@@ -270,8 +270,12 @@ public class GUI extends javax.swing.JFrame {
      * @return an String array of all the models with mpg.
      */
     public String[] getModels(String make)throws IOException, FileNotFoundException{
-        String dir = System.getProperty("user.dir") + "\\src\\makes\\";
-        String file = dir + make + ".txt";
+        
+        myCar.make = make; //Sets the make of the myCar Car object to the selected Make.
+        String dir = System.getProperty("user.dir") + "\\src\\makes\\"; //This line finds the directory of the program. Changes depending on where it is located.
+        String file = dir + make + ".txt"; //This line finds the location of the car make file based on the directory the file is located in.
+        
+        //This BufferedReader goes through the specified make file once to find out how big the make list array needs to be
         BufferedReader read = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String index;
         int i = 0;
@@ -279,6 +283,7 @@ public class GUI extends javax.swing.JFrame {
             i++;
         }
         read.close();
+        //This BufferedReader goes through the specified make file and populates the models array with the models of that certain make. 
         BufferedReader readAgain = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
         String[] models = new String[i];
         String line;
@@ -384,12 +389,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JLabel labelMPG;
     private javax.swing.JComboBox makeList;
     private javax.swing.JComboBox modelList;
+    private javax.swing.JMenu reset;
     private javax.swing.JTextField tripField;
     // End of variables declaration//GEN-END:variables
 }
