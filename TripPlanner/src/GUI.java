@@ -7,8 +7,8 @@ import javax.swing.*;
 
 public class GUI extends javax.swing.JFrame {
     
-    int[] mpg;
-    int carmpg;
+    Car myCar = new Car();
+    int[] mpgList;
     /**
      * Creates new form GUI
      */
@@ -57,7 +57,7 @@ public class GUI extends javax.swing.JFrame {
                     makeListActionPerformed(evt);
                 }
                 catch(IOException ex){
-                    System.out.println("Error Reading File");
+                    
                 }
             }
         });
@@ -142,7 +142,7 @@ public class GUI extends javax.swing.JFrame {
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(labelMPG)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3))
                     .addComponent(galText)
                     .addComponent(costField))
@@ -196,7 +196,7 @@ public class GUI extends javax.swing.JFrame {
             String make = String.valueOf(makeList.getItemAt(index)).toLowerCase();
             try{
                 String models[] = getModels(make);
-                mpg = getMPG(models);
+                mpgList = getMPG(models);
                 setModels(models);                
                 galText.setText("");
                 costField.setText("");
@@ -215,7 +215,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void modelListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelListActionPerformed
         if(modelList.getSelectedIndex() != 0){
-            carmpg = getMPG();
+            myCar.mpg = getMPG();
             galText.setText("");
             costField.setText("");
         }
@@ -229,7 +229,7 @@ public class GUI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
             int trip = Integer.parseInt(tripField.getText());
-            int gal = carmpg * trip;
+            double gal = trip/(double)myCar.mpg;
             galText.setText(gal + " Gallons");
             double cost = gal * 2.809;
             String price = String.valueOf(cost);
@@ -307,7 +307,7 @@ public class GUI extends javax.swing.JFrame {
     
     public int getMPG(){
         int modelIndex = modelList.getSelectedIndex();
-        int MPG = mpg[modelIndex];
+        int MPG = mpgList[modelIndex];
         labelMPG.setText(String.valueOf(MPG));
         return MPG;
     }

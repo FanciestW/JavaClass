@@ -8,15 +8,18 @@ import java.io.*;
 
 public class Car {
     String make, model;
+    int mpg;
 
-    public Car(String make, String model){
+    public Car(String make, String model, int mpg){
         this.make = make;
         this.model = model;
+        this.mpg = mpg;
     }
 
     public Car(){
         this.make = null;
         this.model = null;
+        this.mpg = 0;
     }
 
     public static String findCar(String make, String model) throws IOException, FileNotFoundException{
