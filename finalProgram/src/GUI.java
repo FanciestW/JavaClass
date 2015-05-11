@@ -4,6 +4,7 @@ public class GUI extends javax.swing.JFrame {
     
     Person father = new Person();
     Person mother = new Person();
+    int traitIndex;
     
     /**
      * Creates new form GUI
@@ -29,6 +30,10 @@ public class GUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         phenoMother = new javax.swing.JComboBox();
         phenoFather = new javax.swing.JComboBox();
+        phenoMother1 = new javax.swing.JComboBox();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        phenoMother2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +66,24 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        phenoMother1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phenoMother1ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel6.setText("Genotype:");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setText("Genotype:");
+
+        phenoMother2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                phenoMother2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,20 +95,29 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phenoMother, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(phenoMother1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(phenoMother, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                                .addGap(0, 3, Short.MAX_VALUE)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phenoFather, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
+                                .addComponent(phenoFather, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(phenoMother2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,7 +141,14 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(phenoMother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phenoFather, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(223, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(phenoMother1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(phenoMother2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7)))
+                .addContainerGap(185, Short.MAX_VALUE))
         );
 
         pack();
@@ -122,10 +161,11 @@ public class GUI extends javax.swing.JFrame {
     }
     
     private void traitListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_traitListActionPerformed
-        int traitIndex = traitList.getSelectedIndex();
+        traitIndex = traitList.getSelectedIndex();
         switch(traitIndex){
             case 1:
-                bloodType();
+                phenoMother.setModel(new DefaultComboBoxModel(mother.bloodTypes));
+                phenoFather.setModel(new DefaultComboBoxModel(father.bloodTypes));
                 break;
             case 2:
                 comingSoon();
@@ -144,10 +184,14 @@ public class GUI extends javax.swing.JFrame {
         System.out.println(phenoMother.getItemAt(0));
     }//GEN-LAST:event_phenoMotherActionPerformed
 
-    public void bloodType(){
-        phenoMother.setModel(new DefaultComboBoxModel(mother.bloodTypes));
-        phenoFather.setModel(new DefaultComboBoxModel(father.bloodTypes));
-    }
+    private void phenoMother1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phenoMother1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phenoMother1ActionPerformed
+
+    private void phenoMother2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phenoMother2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_phenoMother2ActionPerformed
+
     
     /**
      * @param args the command line arguments
@@ -190,8 +234,12 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox phenoFather;
     private javax.swing.JComboBox phenoMother;
+    private javax.swing.JComboBox phenoMother1;
+    private javax.swing.JComboBox phenoMother2;
     private javax.swing.JComboBox traitList;
     // End of variables declaration//GEN-END:variables
 }
