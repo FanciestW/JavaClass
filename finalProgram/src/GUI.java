@@ -197,6 +197,8 @@ public class GUI extends javax.swing.JFrame {
             genoMother.setEnabled(false);
             genoMother.setModel(new DefaultComboBoxModel(new String[] {"Homozygous", "Heterozygous"}));
             genoMother.setSelectedIndex(1);
+            mother.bloodType = mother.bloodTypes[choice];
+            mother.homo = false;
         }
         else if(choice != 0 && choice <= 4){
             mother.bloodType = mother.bloodTypes[choice];
@@ -215,6 +217,8 @@ public class GUI extends javax.swing.JFrame {
             genoFather.setEnabled(false);
             genoFather.setModel(new DefaultComboBoxModel(new String[] {"Homozygous", "Heterozygous"}));
             genoFather.setSelectedIndex(1);
+            father.bloodType = mother.bloodTypes[choice];
+            father.homo = false;
         }
         else if(choice != 0 && choice <= 4){
             father.bloodType = father.bloodTypes[choice];
@@ -228,8 +232,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_phenoFatherActionPerformed
 
     private void crossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crossActionPerformed
-        System.out.println("Mother: " + mother.bloodType);
-        System.out.println("Father: " + father.bloodType);
+        if(genoMother.getSelectedIndex() == 0) mother.homo = true;
+        else mother.homo = false;
+        if(genoFather.getSelectedIndex() == 0) father.homo = true;
+        else father.homo = false;
+        System.out.println("Mother: " + mother.bloodType + " " + mother.homo);
+        System.out.println("Father: " + father.bloodType + " " + father.homo);
     }//GEN-LAST:event_crossActionPerformed
 
     
