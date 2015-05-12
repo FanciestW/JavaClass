@@ -30,10 +30,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         phenoMother = new javax.swing.JComboBox();
         phenoFather = new javax.swing.JComboBox();
-        phenoMother1 = new javax.swing.JComboBox();
+        genoMother = new javax.swing.JComboBox();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        phenoMother2 = new javax.swing.JComboBox();
+        genoFather = new javax.swing.JComboBox();
+        cross = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -41,7 +42,7 @@ public class GUI extends javax.swing.JFrame {
         jLabel1.setText("Trait:");
 
         traitList.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        traitList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select A Trait", "Blood Type", "Eye Color", "Hair Color" }));
+        traitList.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select A Trait", "Blood Type" }));
         traitList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 traitListActionPerformed(evt);
@@ -66,9 +67,9 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        phenoMother1.addActionListener(new java.awt.event.ActionListener() {
+        phenoFather.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phenoMother1ActionPerformed(evt);
+                phenoFatherActionPerformed(evt);
             }
         });
 
@@ -78,9 +79,11 @@ public class GUI extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setText("Genotype:");
 
-        phenoMother2.addActionListener(new java.awt.event.ActionListener() {
+        cross.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        cross.setText("Cross");
+        cross.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                phenoMother2ActionPerformed(evt);
+                crossActionPerformed(evt);
             }
         });
 
@@ -100,7 +103,7 @@ public class GUI extends javax.swing.JFrame {
                                     .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(phenoMother1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(genoMother, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(phenoMother, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,20 +112,25 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 3, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phenoFather, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(phenoMother2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(phenoFather, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(genoFather, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(traitList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(172, 172, 172))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(cross)
+                .addGap(199, 199, 199))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,22 +150,32 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(phenoMother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(phenoFather, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phenoMother1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(phenoMother2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7)))
-                .addContainerGap(185, Short.MAX_VALUE))
+                        .addComponent(genoFather, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel7))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(genoMother, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
+                .addGap(18, 18, 18)
+                .addComponent(cross)
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    public void comingSoon(){
-        JOptionPane.showMessageDialog(null, "Feature Coming Soon", "Sorry", JOptionPane.INFORMATION_MESSAGE);
-        phenoMother.setModel(new DefaultComboBoxModel());
-        phenoFather.setModel(new DefaultComboBoxModel());
+    //Resets everything back to starting positions.
+    public void reset(){
+        DefaultComboBoxModel blank = new DefaultComboBoxModel();
+        phenoMother.setModel(blank);
+        phenoFather.setModel(blank);
+        genoMother.setModel(blank);
+        genoFather.setModel(blank);
+        phenoMother.setEnabled(true);
+        phenoFather.setEnabled(true);
+        genoMother.setEnabled(true);
+        genoFather.setEnabled(true);
     }
     
     private void traitListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_traitListActionPerformed
@@ -167,30 +185,52 @@ public class GUI extends javax.swing.JFrame {
                 phenoMother.setModel(new DefaultComboBoxModel(mother.bloodTypes));
                 phenoFather.setModel(new DefaultComboBoxModel(father.bloodTypes));
                 break;
-            case 2:
-                comingSoon();
-                break;
-            case 3:
-                comingSoon();
-                break;
             default:
-                phenoMother.setModel(new DefaultComboBoxModel());
-                phenoFather.setModel(new DefaultComboBoxModel());
+                reset();
                 break;
         }
     }//GEN-LAST:event_traitListActionPerformed
 
     private void phenoMotherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phenoMotherActionPerformed
-        System.out.println(phenoMother.getItemAt(0));
+        int choice = phenoMother.getSelectedIndex();
+        if(choice == 3){
+            genoMother.setEnabled(false);
+            genoMother.setModel(new DefaultComboBoxModel(new String[] {"Homozygous", "Heterozygous"}));
+            genoMother.setSelectedIndex(1);
+        }
+        else if(choice != 0 && choice <= 4){
+            mother.bloodType = mother.bloodTypes[choice];
+            genoMother.setModel(new DefaultComboBoxModel(new String[] {"Homozygous", "Heterozygous"}));
+            genoMother.setEnabled(true);
+        }
+        else{
+            genoMother.setModel(new DefaultComboBoxModel());
+            genoMother.setEnabled(true);
+        }
     }//GEN-LAST:event_phenoMotherActionPerformed
 
-    private void phenoMother1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phenoMother1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phenoMother1ActionPerformed
+    private void phenoFatherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phenoFatherActionPerformed
+        int choice = phenoFather.getSelectedIndex();
+        if(choice == 3){
+            genoFather.setEnabled(false);
+            genoFather.setModel(new DefaultComboBoxModel(new String[] {"Homozygous", "Heterozygous"}));
+            genoFather.setSelectedIndex(1);
+        }
+        else if(choice != 0 && choice <= 4){
+            father.bloodType = father.bloodTypes[choice];
+            genoFather.setModel(new DefaultComboBoxModel(new String[] {"Homozygous", "Heterozygous"}));
+            genoFather.setEnabled(true);
+        }
+        else{
+            genoFather.setModel(new DefaultComboBoxModel());
+            genoFather.setEnabled(true);
+        }
+    }//GEN-LAST:event_phenoFatherActionPerformed
 
-    private void phenoMother2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_phenoMother2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_phenoMother2ActionPerformed
+    private void crossActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crossActionPerformed
+        System.out.println("Mother: " + mother.bloodType);
+        System.out.println("Father: " + father.bloodType);
+    }//GEN-LAST:event_crossActionPerformed
 
     
     /**
@@ -229,6 +269,9 @@ public class GUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cross;
+    private javax.swing.JComboBox genoFather;
+    private javax.swing.JComboBox genoMother;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -238,8 +281,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JComboBox phenoFather;
     private javax.swing.JComboBox phenoMother;
-    private javax.swing.JComboBox phenoMother1;
-    private javax.swing.JComboBox phenoMother2;
     private javax.swing.JComboBox traitList;
     // End of variables declaration//GEN-END:variables
 }
